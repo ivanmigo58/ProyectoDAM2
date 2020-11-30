@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".RegistroFragment"
     android:orientation="vertical"
-    tools:context=".Login.LoginFragment"
     style="@style/background">
 
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/title"
+        android:text="@string/registrarse"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
         style="@style/title"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:gravity="center_vertical"
+            android:layout_height="400dp"
             android:orientation="vertical"
             style="@style/layoutLogin">
 
@@ -46,32 +45,21 @@
                 android:inputType="textPassword"
                 style="@style/editTextsLogin" />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/editTextRepetirContrasenya"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="textPassword"
+                android:hint="Contraseña"
+                style="@style/editTextsLogin" />
+
+            <Button
+                android:id="@+id/buttonRegistre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <Button
-                    android:id="@+id/buttonLogin"
-                    style="@style/buttons"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/bordes_redondos"
-                    android:backgroundTint="#FFFFFF"
-                    android:text="@string/login" />
-
-                <Button
-                    android:id="@+id/buttonRegistre"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="@string/registrarse"
-                    android:background="@drawable/bordes_redondos"
-                    style="@style/buttons" />
-            </LinearLayout>
+                android:layout_marginTop="20dp"
+                android:text="@string/registrarse"
+                style="@style/buttons" />
 
             <TextView
                 android:id="@+id/loginAnonimo"
@@ -80,8 +68,11 @@
                 android:text="@string/entrarComoAnonimo"
                 android:textAlignment="center"
                 style="@style/anonimo"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="15dp"/>
+
+
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

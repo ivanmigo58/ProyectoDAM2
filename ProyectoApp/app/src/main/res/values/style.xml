@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- El fondo de las pantallas-->
+    <style name="background" parent="TextAppearance.AppCompat" >
+        <!--Este color es porque es transparente al 80%-->
+        <item name="android:background">#56CCF2</item>
+    </style>
+
+    <!-- Titulo-->
+    <style name="title" parent="TextAppearance.AppCompat" >
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">46sp</item>
+        <item name="android:letterSpacing">0.1</item>
+    </style>
+
+    <!-- Layout donde esta el login  -->
+    <style name="layoutLogin" parent="TextAppearance.AppCompat" >
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <!--    Estilo de los edittext usuario y registro-->
+    <style name="editTextsLogin" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textColorHint">#7DFFFFFF</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:paddingTop">10dp</item>
+    </style>
+
+
+    <!-- Para los botones del login -->
+    <style name="buttons" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">#c8c1bf</item>
+        <item name="android:backgroundTint">#ffffff</item>
+
+    </style>
+
+    <!-- Label de entrar como anonimo -->
+    <style name="anonimo" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">#353535</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+</resources>

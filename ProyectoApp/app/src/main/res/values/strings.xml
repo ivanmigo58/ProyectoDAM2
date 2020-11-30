@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProyectoApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title">FutMundo</string>
+    <string name="login">Login</string>
+    <string name="registrarse">REGISTRARTE</string>
+    <string name="entrarComoAnonimo">Entrar como anonimo</string>
+</resources>
