@@ -34,6 +34,7 @@
         <item name="android:textSize">14dp</item>
         <item name="android:textColor">#c8c1bf</item>
         <item name="android:backgroundTint">#ffffff</item>
+        <item name="background">@color/white</item>
 
     </style>
 

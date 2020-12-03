@@ -5,12 +5,18 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
 public class LoginViewModel extends AndroidViewModel {
 
-    LoginManager loginManager;
+    private LoginManager loginManager;
+
+    // Variables que observan el fragment
+    MutableLiveData<Boolean> loginResult = new MutableLiveData<>();
+    MutableLiveData<Boolean> registroResult = new MutableLiveData<>();
+
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
@@ -18,18 +24,35 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     // Obtengo los datos
-    LiveData<Boolean> obtenerUser(String usuario, String password) {
-        return loginManager.validarUser(usuario, password);
+    void obtenerUser(String usuario, String password) {
+        loginManager.validarUser(usuario, password, new LoginManager.LoginLlamadaVuelta() {
+            @Override
+            public void cueandoLoginOk() {
+                loginResult.postValue(true);
+            }
+
+            @Override
+            public void cuandoLoginError() {
+                loginResult.postValue(false);
+            }
+        });
     }
 
     // Inserta los datos
     public void insertar(User user) {
-        loginManager.insertar(user);
-    }
+        loginManager.insertar(user, new LoginManager.RegistroLlamadaVuelta() {
+            @Override
+            public void cuandoRegistroOk() {
+                registroResult.postValue(true);
+            }
 
-    LiveData<List<User>> obtenerTodo() {
-        return loginManager.obtenerTodo();
-    }
+            @Override
+            public void cuandoUsuarioYaExiste() {
+                registroResult.postValue(false);
+            }
+        });
 
+    }
 }
+
 

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/mapaPrincipalFragment"
+        android:id="@+id/eventosFragment"
         android:icon="@android:drawable/ic_menu_directions"
-        android:title="Menu principal" />
-
-    <item
-        android:id="@+id/gestionarReportesFragment"
-        android:icon="@android:drawable/ic_menu_directions"
-        android:title="Gestionar reportes" />
+        android:title="Eventos" />
 
     <item
         android:id="@+id/loginFragment"

@@ -19,6 +19,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.proyectoapp.R;
 import com.example.proyectoapp.R;
@@ -62,9 +63,12 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 usuario = binding.editTextUsuario.getText().toString();
                 password = binding.editTextContrasenya.getText().toString();
-                loginViewModel.obtenerUser(usuario, password);
-
-
+                // Siempre que estan commpletos
+                if (!usuario.equals("") && !password.equals("")) {
+                    loginViewModel.obtenerUser(usuario, password);
+                } else {
+                    Toast.makeText(getContext(), "Tienes que introducir usuario y contraseña.", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -86,34 +90,21 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        obtenerUser().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+        // Obtengo usuario y contraseña de la base de datos
+        loginViewModel.loginResult.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
+                // Login correcto
                 if (aBoolean) {
-                    System.out.println("Correcto");
-                } else {
-                    System.out.println("Incorrecto");
+                    navController.navigate(R.id.go_to_EventosFragment);
                 }
+                // Login incorrecto
+                else {
+                    Toast.makeText(getContext(), "Usuario o contraseña incorrecta!", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
 
-        obtenerTodo().observe(getViewLifecycleOwner(), new Observer<List<User>>() {
-            @Override
-            public void onChanged(List<User> users) {
-                userList = users;
-            }
-        });
-
     }
-
-    // Obtengo usuario y contraseña de la base de datos
-    LiveData<Boolean> obtenerUser() {
-        return loginViewModel.obtenerUser(usuario, password);
-    }
-
-    // Obtengo todos los datos de la base de datos
-    LiveData<List<User>> obtenerTodo() {
-        return loginViewModel.obtenerTodo();
-    }
-
 }

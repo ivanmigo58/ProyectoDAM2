@@ -25,7 +25,9 @@ public interface DaoBaseDeDatos {
     @Insert
     void insertar(User user);
 
-
+    // Comprueba si existe algun usuario con ese nombre
+    @Query("SELECT * FROM User where username = :username LIMIT 1")
+    User comprobarUsuario(String username);
 
 }
 

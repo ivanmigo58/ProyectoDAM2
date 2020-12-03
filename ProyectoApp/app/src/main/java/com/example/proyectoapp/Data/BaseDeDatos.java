@@ -28,7 +28,7 @@ public abstract class BaseDeDatos extends RoomDatabase{
             synchronized (BaseDeDatos.class) {
                 if (INSTANCIA == null) {
                     INSTANCIA = Room.databaseBuilder(context,
-                            BaseDeDatos.class, "securemaps.db")
+                            BaseDeDatos.class, "futmundo.db")
                             .fallbackToDestructiveMigration()
                             .build();
                 }

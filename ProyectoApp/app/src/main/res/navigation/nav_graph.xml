@@ -10,11 +10,11 @@
         android:name="com.example.proyectoapp.EventosFragment"
         android:label="fragment_eventos"
         tools:layout="@layout/fragment_eventos" >
+    </fragment>
 
     <action
         android:id="@+id/go_to_EventosFragment"
-        app:destination="@+id/eventosFragment"/>
-    </fragment>
+        app:destination="@+id/tabbed_graph"/>
 
     <fragment
         android:id="@+id/loginFragment"
@@ -28,7 +28,13 @@
 
     <fragment
         android:id="@+id/registroFragment"
-        android:name="com.example.proyectoapp.RegistroFragment"
+        android:name="com.example.proyectoapp.Login.RegistroFragment"
         android:label="fragment_registro"
         tools:layout="@layout/fragment_registro" />
+
+    <fragment
+        android:id="@+id/tabbed_graph"
+        android:name="com.example.proyectoapp.tabbed_graph"
+        android:label="fragment_tabbed_graph"
+        tools:layout="@layout/fragment_tabbed_graph" />
 </navigation>

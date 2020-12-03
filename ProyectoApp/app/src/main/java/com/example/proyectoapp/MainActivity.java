@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
         // Los fragments que meto aqui, saldra el boton de hamburguesa
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.mapaPrincipalFragment, R.id.gestionarReportesFragment)
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.tabbed_graph)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 
