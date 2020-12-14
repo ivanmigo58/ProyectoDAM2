@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Configuracion.ConfiguracionFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Cuenta-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/configuracion_cuenta"
+            style="@style/separatorsConfiguracion"/>
+
+        <!-- Separador-->
+        <View
+            android:layout_width="match_parent"
+            style="@style/separadorView"/>
+
+        <!-- Linear usuario-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@style/linearConfiguracion">
+
+            <ImageView
+                android:layout_height="40dp"
+                android:src="@drawable/usuario"
+                style="@style/primeraImagen"/>
+
+            <TextView
+                android:layout_height="match_parent"
+                style="@style/textoBold"
+                android:text="@string/configuracion_usuario"/>
+
+            <TextView
+                android:id="@+id/textViewUsuario"
+                android:layout_height="match_parent"
+                android:text="ivanmigo58"
+                style="@style/textoCurvado"/>
+
+            <ImageView
+                android:padding="5dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/configuracion_editar"
+                style="@style/imagenFinal"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            style="@style/separadorViewFlojo"/>
+
+        <!-- Linear contraseña-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@style/linearConfiguracion">
+
+            <ImageView
+                android:layout_height="40dp"
+                android:src="@drawable/password"
+                style="@style/primeraImagen"/>
+
+            <TextView
+                android:layout_height="match_parent"
+                style="@style/textoBold"
+                android:text="@string/configuracion_contrasenya"/>
+
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_height="match_parent"
+                android:text="*******"
+                style="@style/textoCurvado"/>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/buttonVerPassword"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/configuracion_mostrar_password"
+                    style="@style/imagenFinal" />
+
+                <ImageView
+                    android:id="@+id/buttonOcultarPassword"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/configuracion_ocultar_password"
+                    style="@style/imagenFinal"
+                    android:visibility="gone"/>
+
+
+
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:src="@drawable/configuracion_editar"
+                    style="@style/imagenFinal"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            style="@style/separadorViewFlojo"/>
+
+        <!-- Boton vincular a Google -->
+        <Button
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:drawableStart="@drawable/configuracion_google"
+            android:text="@string/configuracion_vincularGoogle"
+            style="@style/botonVincularGoogle" />
+
+
+        <!-- Opciones avanzadas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/configuracion_opcionesAvanzadas"
+            style="@style/separatorsConfiguracion"/>
+
+        <!-- Separador-->
+        <View
+            android:layout_width="match_parent"
+            style="@style/separadorView"/>
+
+        <View
+            android:layout_width="match_parent"
+            style="@style/separadorViewFlojo"/>
+
+        <!-- Direccion de correo electronico -->
+        <LinearLayout
+            android:id="@+id/layoutDireccionCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            style="@style/linearConfiguracion">
+
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_weight="0.55"
+                android:src="@drawable/configuracion_correo"
+                style="@style/primeraImagen"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/textoBold"
+                    android:text="@string/configuracion_DireccionCorreo"/>
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    style="@style/textoCurvado"
+                    android:text="imirallesg01@elpuig.xeill.net"/>
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/configuracion_editar"
+                android:layout_gravity="bottom"
+                style="@style/imagenFinal"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            style="@style/separadorViewFlojo"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logofutmundo" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

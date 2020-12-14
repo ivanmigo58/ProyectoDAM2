@@ -1,9 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EventosFragment">
+    tools:context=".EventosFragment"
+    android:orientation="vertical">
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/bordes_redondos">
 
 
-</FrameLayout>
+                <ImageView
+                    android:id="@+id/add1_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/casemirohazard"/>
+
+                <TextView
+                    android:id="@+id/text_add1"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add1_image"
+                    android:text="¡Dan positivo!"
+                    android:textSize = "16dp"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textStyle = "bold"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/bordes_redondos">
+
+                <ImageView
+                    android:id="@+id/add2_image"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/champions"
+                    android:background="@drawable/bordes_redondos"/>
+
+                <TextView
+                    android:id="@+id/text_add2"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add2_image"
+                    android:text="Champions League"
+                    android:textSize = "16dp"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textStyle = "bold"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/bordes_redondos">
+
+                <ImageView
+                    android:id="@+id/add3_image"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/europaleague"
+                    android:background="@drawable/bordes_redondos">
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/text_add3"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add3_image"
+                    android:text="Hola"
+                    android:textSize = "16dp"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textStyle = "bold"/>
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/bordes_redondos">
+
+                <ImageView
+                    android:id="@+id/add4_image"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/barsamadrid"
+                    android:background="@drawable/bordes_redondos"/>
+
+                <TextView
+                    android:id="@+id/text_add4"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add4_image"
+                    android:text="La Liga: El clasico"
+                    android:textSize = "16dp"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textStyle = "bold"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_margin="10dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/bordes_redondos">
+
+                <ImageView
+                    android:id="@+id/add5_image"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/diogojota"
+                    android:background="@drawable/bordes_redondos"/>
+
+                <TextView
+                    android:id="@+id/text_add5"
+                    android:paddingLeft="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/add5_image"
+                    android:text="Diogo Jota: La moda"
+                    android:textSize = "16dp"
+                    android:layout_gravity="bottom"
+                    android:textColor="@color/white"
+                    android:textStyle = "bold"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+    </LinearLayout>

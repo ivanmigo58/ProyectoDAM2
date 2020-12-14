@@ -44,4 +44,13 @@
         <item name="android:textStyle">italic</item>
         <item name="android:textSize">16dp</item>
     </style>
+
+    <!-- Boton vinncular google -->
+    <style name="botonVincularGoogle" parent="TextAppearance.AppCompat">
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/button_vincular_google_border</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15dp</item>
+    </style>
 </resources>

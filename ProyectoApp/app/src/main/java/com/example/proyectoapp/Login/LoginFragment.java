@@ -34,10 +34,8 @@ public class LoginFragment extends Fragment {
     private NavController navController;
     private LoginViewModel loginViewModel;
 
-    private List<User> userList = new ArrayList<>();
-
-    private String usuario = null;
-    private String password = null;
+    public static String usuario = null;
+    public static String password = null;
 
 
     @Override

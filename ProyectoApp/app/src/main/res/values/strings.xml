@@ -5,4 +5,16 @@
     <string name="login">Login</string>
     <string name="registrarse">REGISTRARTE</string>
     <string name="entrarComoAnonimo">Entrar como anonimo</string>
+    <string name="usuario">Usuario</string>
+    <string name="anonimo">Anonimo</string>
+    <string name="login_contraseña">Contraseña</string>
+    <string name="repetirContraseña">Repetir contraseña</string>
+    <string name="itemConfiguracion">Configuracion</string>
+    <string name="itemCerrarSesion">Cerrar sesion</string>
+    <string name="configuracion_cuenta">Cuenta</string>
+    <string name="configuracion_usuario">Usuario:</string>
+    <string name="configuracion_contrasenya">Contraseña:</string>
+    <string name="configuracion_vincularGoogle">Vincular a Google</string>
+    <string name="configuracion_DireccionCorreo">Direccion de correo electronico:</string>
+    <string name="configuracion_opcionesAvanzadas">Opciones avanzadas</string>
 </resources>
