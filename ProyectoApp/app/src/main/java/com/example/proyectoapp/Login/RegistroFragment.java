@@ -25,6 +25,8 @@ public class RegistroFragment extends Fragment {
     private LoginViewModel loginViewModel;
     private User userInsertar = new User();
 
+    private String usuario;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class RegistroFragment extends Fragment {
             public void onChanged(Boolean aBoolean) {
                 // Si se ha podido insertar los datos
                 if (aBoolean) {
+                    Toast.makeText(getContext(), "Usuario registrado con exito!", Toast.LENGTH_LONG).show();
                     navController.navigate(R.id.go_to_EventosFragment);
                 } else {
                     Toast.makeText(getContext(), "El usuario ya existe", Toast.LENGTH_LONG);

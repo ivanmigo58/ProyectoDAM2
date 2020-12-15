@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.proyectoapp.Login.User;
 
@@ -28,6 +29,15 @@ public interface DaoBaseDeDatos {
     // Comprueba si existe algun usuario con ese nombre
     @Query("SELECT * FROM User where username = :username LIMIT 1")
     User comprobarUsuario(String username);
+
+    // Cambia el usuario
+    @Update
+    void updateUsuario(User user);
+
+    // Cambia la contraseña
+    @Update
+    void updatePassword(User user);
+
 
 }
 

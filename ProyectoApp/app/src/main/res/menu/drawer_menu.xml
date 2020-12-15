@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/eventosFragment"
+        android:id="@+id/tabbed_graph"
         android:icon="@android:drawable/ic_menu_directions"
         android:title="Eventos" />
 

@@ -17,7 +17,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 
-public class tabbed_graph extends Fragment {
+public class TabbedGraphFragment extends Fragment {
 
     private FragmentTabbedGraphBinding binding;
 
@@ -55,6 +55,7 @@ public class tabbed_graph extends Fragment {
                 return 3;
             }
         });
+
 
         new TabLayoutMediator(binding.tabLayout, binding.viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override

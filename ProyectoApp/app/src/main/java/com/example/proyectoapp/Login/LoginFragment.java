@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -94,6 +95,9 @@ public class LoginFragment extends Fragment {
             public void onChanged(Boolean aBoolean) {
                 // Login correcto
                 if (aBoolean) {
+                    // Reseteo la variable, para que al cerrar sesion no se guarde el resultado
+                    loginViewModel.loginResult = new MutableLiveData<>();
+
                     navController.navigate(R.id.go_to_EventosFragment);
                 }
                 // Login incorrecto

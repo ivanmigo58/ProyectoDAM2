@@ -34,7 +34,7 @@
 
     <fragment
         android:id="@+id/tabbed_graph"
-        android:name="com.example.proyectoapp.tabbed_graph"
+        android:name="com.example.proyectoapp.TabbedGraphFragment"
         android:label="fragment_tabbed_graph"
         tools:layout="@layout/fragment_tabbed_graph" />
     <fragment
@@ -42,6 +42,4 @@
         android:name="com.example.proyectoapp.Configuracion.ConfiguracionFragment"
         android:label="fragment_configuracion"
         tools:layout="@layout/fragment_configuracion" />
-
-
 </navigation>

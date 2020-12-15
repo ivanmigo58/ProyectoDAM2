@@ -1,16 +1,11 @@
 package com.example.proyectoapp.Login;
 
 import android.app.Application;
-import android.util.JsonReader;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 
 import com.example.proyectoapp.Data.BaseDeDatos;
 import com.example.proyectoapp.Data.DaoBaseDeDatos;
 
-import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -19,15 +14,27 @@ public class LoginManager {
     DaoBaseDeDatos daoBaseDeDatos;
     Executor executor = Executors.newSingleThreadExecutor();
 
-    interface LoginLlamadaVuelta {
-        void cueandoLoginOk();
+    interface LoginCallback {
+        void cueandoLoginOk(User user);
         void cuandoLoginError();
     }
 
-    interface RegistroLlamadaVuelta {
+    interface RegistroCallback {
         void cuandoRegistroOk();
         void cuandoUsuarioYaExiste();
     }
+
+    interface UpdateUsuarioCallback {
+        void usuarioActualizadoOk();
+        void usuarioError();
+    }
+
+
+    interface UpdatePasswordCallback {
+        void passwordActualziadoOk();
+        void passwordError();
+    }
+
 
 
     // Constructor
@@ -35,16 +42,16 @@ public class LoginManager {
         daoBaseDeDatos = BaseDeDatos.obtenerInstancia(application).daoBaseDeDatos();
     }
 
-    void validarUser(String usuario, String password, LoginLlamadaVuelta loginLlamadaVuelta) {
+    void validarUser(String usuario, String password, LoginCallback loginCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 User user = daoBaseDeDatos.obtenerUser(usuario, password);
                 // Si el usuario y password son correctos
                 if (user != null) {
-                    loginLlamadaVuelta.cueandoLoginOk();
+                    loginCallback.cueandoLoginOk(user);
                 } else {
-                    loginLlamadaVuelta.cuandoLoginError();
+                    loginCallback.cuandoLoginError();
                 }
             }
         });
@@ -52,23 +59,61 @@ public class LoginManager {
     }
 
     // Inserta datos
-    void insertar(User user, RegistroLlamadaVuelta registroLlamadaVuelta) {
+    void insertar(User user, RegistroCallback registroCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 // Compruebo que no exista ese usuario en la base de datos
                 if (daoBaseDeDatos.comprobarUsuario(user.username) == null) {
                     daoBaseDeDatos.insertar(user);
-                    registroLlamadaVuelta.cuandoRegistroOk();
+                    registroCallback.cuandoRegistroOk();
                 }
 
                 // Si no se ha podido hacer insert
                 else {
-                    registroLlamadaVuelta.cuandoUsuarioYaExiste();
+                    registroCallback.cuandoUsuarioYaExiste();
                 }
             }
         });
     }
+
+    // Actualizar usuario
+    void updateUsuario(User user, String nuevoUsuario, UpdateUsuarioCallback updateUsuarioCallback) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Actualizo los datos
+                daoBaseDeDatos.updateUsuario(user);
+                // Compruebo que exista el nuevo usuario
+                if (daoBaseDeDatos.comprobarUsuario(nuevoUsuario) != null) {
+                    updateUsuarioCallback.usuarioActualizadoOk();
+                }
+                // Error al actualizar datos
+                else {
+                    System.out.println("error");
+                    updateUsuarioCallback.usuarioError();
+                }
+            }
+        });
+    }
+
+
+    void updatePassword(User user, UpdatePasswordCallback updatePasswordCallback) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Actualizado los datos
+                daoBaseDeDatos.updatePassword(user);
+                // Compruebo que exista el usuario
+                if (daoBaseDeDatos.obtenerUser(user.username, user.password) != null) {
+                    updatePasswordCallback.passwordActualziadoOk();
+                } else {
+                    updatePasswordCallback.passwordError();
+                }
+            }
+        });
+    }
+
 
 
 }
