@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Titulo principal competiciones-->
+    <style name="titulo_principal_competiciones" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#99000000</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+
+    <!--Titulo competicion-->
+    <style name="titulo_competiciones" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">#99000000</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <!--Hora partido-->
+    <style name="hora_partido" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#4D000000</item>
+        <item name="android:paddingLeft">5dp</item>
+    </style>
+
+    <!--Minuto partido-->
+    <style name="minuto_partido" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/rojo</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+
+</resources>

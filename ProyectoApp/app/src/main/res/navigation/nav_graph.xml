@@ -42,4 +42,33 @@
         android:name="com.example.proyectoapp.Configuracion.ConfiguracionFragment"
         android:label="fragment_configuracion"
         tools:layout="@layout/fragment_configuracion" />
+    <fragment
+        android:id="@+id/dialogModificarFragment"
+        android:name="com.example.proyectoapp.Dialog.DialogModificar.DialogModificarFragment"
+        android:label="fragment_dialog_modificar"
+        tools:layout="@layout/fragment_dialog_modificar" />
+
+    <action
+        android:id="@+id/go_to_loginFragment"
+        app:destination="@+id/loginFragment"/>
+
+    <action
+        android:id="@+id/go_to_dialogModificarFragment"
+        app:destination="@+id/dialogModificarFragment"/>
+    <fragment
+        android:id="@+id/dialogConfirmarFragment"
+        android:name="com.example.proyectoapp.Dialog.DialogConfirmar.DialogConfirmarFragment"
+        android:label="fragment_dialog_confirmar"
+        tools:layout="@layout/fragment_dialog_confirmar" />
+
+    <fragment
+        android:id="@+id/dialogReportarFragment"
+        android:name="com.example.proyectoapp.Dialog.DialogReportar.DialogReportarFragment"
+        android:label="fragment_dialog_reportar"
+        tools:layout="@layout/fragment_dialog_reportar" />
+    <fragment
+        android:id="@+id/dialogReportarFragment2"
+        android:name="com.example.proyectoapp.Dialog.DialogReportar.DialogReportarFragment"
+        android:label="fragment_dialog_reportar"
+        tools:layout="@layout/fragment_dialog_reportar" />
 </navigation>

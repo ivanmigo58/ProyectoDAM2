@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.proyectoapp.R;
 import com.example.proyectoapp.R;
+import com.example.proyectoapp.Utils;
 import com.example.proyectoapp.databinding.ActivityMainBinding;
 import com.example.proyectoapp.databinding.FragmentLoginBinding;
 
@@ -34,9 +35,6 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private NavController navController;
     private LoginViewModel loginViewModel;
-
-    public static String usuario = null;
-    public static String password = null;
 
 
     @Override
@@ -60,8 +58,8 @@ public class LoginFragment extends Fragment {
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usuario = binding.editTextUsuario.getText().toString();
-                password = binding.editTextContrasenya.getText().toString();
+                String usuario = binding.editTextUsuario.getText().toString();
+                String password = binding.editTextContrasenya.getText().toString();
                 // Siempre que estan commpletos
                 if (!usuario.equals("") && !password.equals("")) {
                     loginViewModel.obtenerUser(usuario, password);
@@ -90,21 +88,17 @@ public class LoginFragment extends Fragment {
         });
 
         // Obtengo usuario y contraseña de la base de datos
-        loginViewModel.loginResult.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                // Login correcto
-                if (aBoolean) {
-                    // Reseteo la variable, para que al cerrar sesion no se guarde el resultado
-                    loginViewModel.loginResult = new MutableLiveData<>();
-
-                    navController.navigate(R.id.go_to_EventosFragment);
-                }
-                // Login incorrecto
-                else {
-                    Toast.makeText(getContext(), "Usuario o contraseña incorrecta!", Toast.LENGTH_LONG).show();
-                }
-
+        loginViewModel.loginResult.observe(getViewLifecycleOwner(), valor -> {
+            // Login correcto
+            if (valor.equals(Utils.Valor.TRUE)) {
+                // Reseteo la variable, para que al cerrar sesion no se guarde el resultado
+                loginViewModel.loginResult.postValue(Utils.Valor.NULL);
+                navController.navigate(R.id.go_to_EventosFragment);
+            }
+            // Login incorrecto
+            else if (valor.equals(Utils.Valor.FALSE)) {
+                Toast.makeText(getContext(), "Usuario o contraseña incorrecta!", Toast.LENGTH_LONG).show();
+                loginViewModel.loginResult.postValue(Utils.Valor.NULL);
             }
         });
 

@@ -9,8 +9,10 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Spinner;
 
 import com.example.proyectoapp.databinding.ActivityMainBinding;
+import com.example.proyectoapp.databinding.FragmentEventosBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = ((NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)).getNavController();
         NavigationUI.setupWithNavController(binding.navView, navController);
         NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration);
+
+
+
     }
 
 }

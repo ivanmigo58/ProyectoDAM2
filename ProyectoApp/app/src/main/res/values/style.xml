@@ -32,7 +32,7 @@
     <!-- Para los botones del login -->
     <style name="buttons" parent="TextAppearance.AppCompat">
         <item name="android:textSize">14dp</item>
-        <item name="android:textColor">#c8c1bf</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:backgroundTint">#ffffff</item>
         <item name="background">@color/white</item>
 
@@ -53,4 +53,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
     </style>
+
+    <color name="azulPrincipal">#56CCF2</color>
 </resources>

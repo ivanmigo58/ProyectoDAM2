@@ -1,4 +1,4 @@
-package com.example.proyectoapp.Data;https://developer.android.com/training/data-storage/room#java
+package com.example.proyectoapp.Data;
 
 import android.content.Context;
 

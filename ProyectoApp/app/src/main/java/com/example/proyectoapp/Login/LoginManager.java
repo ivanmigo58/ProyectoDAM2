@@ -35,6 +35,11 @@ public class LoginManager {
         void passwordError();
     }
 
+    interface EliminarUsuarioCallback {
+        void eliminarOk();
+        void eliminarError();
+    }
+
 
 
     // Constructor
@@ -90,14 +95,13 @@ public class LoginManager {
                 }
                 // Error al actualizar datos
                 else {
-                    System.out.println("error");
                     updateUsuarioCallback.usuarioError();
                 }
             }
         });
     }
 
-
+    // Actualiza la contraseña
     void updatePassword(User user, UpdatePasswordCallback updatePasswordCallback) {
         executor.execute(new Runnable() {
             @Override
@@ -109,6 +113,23 @@ public class LoginManager {
                     updatePasswordCallback.passwordActualziadoOk();
                 } else {
                     updatePasswordCallback.passwordError();
+                }
+            }
+        });
+    }
+
+    // Elimina una cuenta de usuario
+    void eliminarUsuario(User user, EliminarUsuarioCallback eliminarUsuarioCallback) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                // Elimino la cuenta
+                daoBaseDeDatos.eliminarUsuario(user);
+                // Compruebo que no exista el usuario
+                if (daoBaseDeDatos.obtenerUser(user.username, user.password) == null) {
+                    eliminarUsuarioCallback.eliminarOk();
+                } else {
+                    eliminarUsuarioCallback.eliminarError();
                 }
             }
         });

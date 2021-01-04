@@ -57,11 +57,12 @@
                 android:hint="Contraseña"
                 style="@style/editTextsLogin" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/buttonRegistre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/black"
                 android:background="@drawable/bordes_redondos"
                 android:text="@string/registrarse"
                 style="@style/buttons" />

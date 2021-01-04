@@ -48,6 +48,7 @@
                 style="@style/textoCurvado"/>
 
             <ImageView
+                android:id="@+id/buttonCambiarUsuario"
                 android:padding="5dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/configuracion_editar"
@@ -104,6 +105,7 @@
 
 
                 <ImageView
+                    android:id="@+id/buttonCambiarPassword"
                     android:layout_height="match_parent"
                     android:src="@drawable/configuracion_editar"
                     style="@style/imagenFinal"/>
@@ -187,6 +189,15 @@
         <View
             android:layout_width="match_parent"
             style="@style/separadorViewFlojo"/>
+
+
+        <!--        Boton eliminar cuenta        -->
+        <Button
+            android:id="@+id/buttonEliminarCuenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/eliminar_cuenta"
+            style="@style/eliminarCuenta"/>
 
 
         <LinearLayout

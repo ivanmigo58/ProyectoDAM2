@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EventosFragment"
     android:orientation="vertical">
 
@@ -14,13 +15,15 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
-            <FrameLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
+                android:backgroundTint="@color/black"
                 android:background="@drawable/bordes_redondos">
 
 
@@ -29,7 +32,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/casemirohazard" />
+                    android:src="@drawable/casemirohazard"
+                    android:background="@drawable/bordes_redondos"/>
+
 
                 <TextView
                     android:id="@+id/text_add1"
@@ -44,11 +49,12 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
-            </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
-            <FrameLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/bordes_redondos">
 
@@ -73,11 +79,12 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
-            </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
-            <FrameLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/bordes_redondos">
 
@@ -103,11 +110,12 @@
                     android:textStyle="bold" />
 
 
-            </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
-            <FrameLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/bordes_redondos">
 
@@ -132,11 +140,12 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
-            </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
-            <FrameLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                app:cardCornerRadius="8dp"
                 android:layout_margin="10dp"
                 android:background="@drawable/bordes_redondos">
 
@@ -161,8 +170,81 @@
                     android:textSize="16dp"
                     android:textStyle="bold" />
 
-            </FrameLayout>
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
     </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Competiciones Populares"
+            style="@style/titulo_principal_competiciones"/>
+
+    </LinearLayout>
+
+    <!-- Separador-->
+    <View
+        android:layout_width="match_parent"
+        style="@style/separadorView"/>
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutChampions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingLeft="5dp"
+            android:src="@drawable/champion_icon"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Champions League"
+            style="@style/titulo_competiciones"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/partido1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21:00"
+                style="@style/hora_partido"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="85'"
+                style="@style/minuto_partido"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </LinearLayout>

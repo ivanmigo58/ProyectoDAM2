@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Estilo del fragment -->
+    <style name="fragmentDialogModificar" parent="TextAppearance.AppCompat">
+        <item name="android:minWidth">275dp</item>
+        <item name="android:minHeight">100dp</item>
+        <item name="android:layout_margin">20dp</item>
+    </style>
+
+    <!--    Titulo del dialogo-->
+    <style name="titulo_dialog" parent="TextAppearance.AppCompat" >
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <!--    Contenido del dialogo-->
+    <style name="texto_dialog" parent="TextAppearance.AppCompat" >
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <!--    Boton negativo del dialogo-->
+    <style name="edittext_dialog" parent="TextAppearance.AppCompat" >
+        <item name="android:textSize">15dp</item>
+        <item name="android:backgroundTint">#005E0E</item>
+    </style>
+
+
+    <!--    Boton positivo del dialogo-->
+    <style name="boton_negativo_dialog" parent="TextAppearance.AppCompat" >
+        <item name="android:textSize">19dp</item>
+        <item name="android:textAlignment">viewEnd</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+
+    <style name="boton_positivo_dialog" parent="TextAppearance.AppCompat" >
+        <item name="android:textSize">19dp</item>
+        <item name="android:textAlignment">viewEnd</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+</resources>
+

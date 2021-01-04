@@ -2,6 +2,7 @@ package com.example.proyectoapp.Data;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -37,6 +38,10 @@ public interface DaoBaseDeDatos {
     // Cambia la contraseña
     @Update
     void updatePassword(User user);
+
+    // Elimina un usuario
+    @Delete
+    void eliminarUsuario(User user);
 
 
 }

@@ -6,17 +6,20 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.proyectoapp.Utils;
+
 public class LoginViewModel extends AndroidViewModel {
 
     private LoginManager loginManager;
-    public MutableLiveData<User> userActual = new MutableLiveData<>();
+    public static MutableLiveData<User> userActual = new MutableLiveData<>();
 
     // Variables que observan el fragment
-    MutableLiveData<Boolean> loginResult = new MutableLiveData<>();
-    MutableLiveData<Boolean> registroResult = new MutableLiveData<>();
-    public MutableLiveData<Boolean> updateUsuario = new MutableLiveData<>();
-    public MutableLiveData<Boolean> updatePassword = new MutableLiveData<>();
+    MutableLiveData<Utils.Valor> loginResult = new MutableLiveData<>();
+    MutableLiveData<Utils.Valor> registroResult = new MutableLiveData<>();
+    public MutableLiveData<Utils.Valor> updateUsuario = new MutableLiveData<>();
+    public MutableLiveData<Utils.Valor> updatePassword = new MutableLiveData<>();
     public MutableLiveData<Boolean> mostrarPassword = new MutableLiveData<>();
+    public MutableLiveData<Utils.Valor> eliminadoUsuario = new MutableLiveData<>();
 
 
 
@@ -30,13 +33,13 @@ public class LoginViewModel extends AndroidViewModel {
         loginManager.validarUser(usuario, password, new LoginManager.LoginCallback() {
             @Override
             public void cueandoLoginOk(User user) {
-                loginResult.postValue(true);
+                loginResult.postValue(Utils.Valor.TRUE);
                 userActual.postValue(user);
             }
 
             @Override
             public void cuandoLoginError() {
-                loginResult.postValue(false);
+                loginResult.postValue(Utils.Valor.FALSE);
             }
         });
     }
@@ -47,12 +50,14 @@ public class LoginViewModel extends AndroidViewModel {
         loginManager.insertar(user, new LoginManager.RegistroCallback() {
             @Override
             public void cuandoRegistroOk() {
-                registroResult.postValue(true);
+                registroResult.postValue(Utils.Valor.TRUE);
+                userActual.postValue(user);
             }
 
             @Override
             public void cuandoUsuarioYaExiste() {
-                registroResult.postValue(false);
+                registroResult.postValue(Utils.Valor.FALSE);
+                System.out.println("error usuario");
             }
         });
 
@@ -63,13 +68,13 @@ public class LoginViewModel extends AndroidViewModel {
         loginManager.updateUsuario(user, nuevoUsuario, new LoginManager.UpdateUsuarioCallback() {
             @Override
             public void usuarioActualizadoOk() {
-                updateUsuario.postValue(true);
+                updateUsuario.postValue(Utils.Valor.TRUE);
                 userActual.postValue(user);
             }
 
             @Override
             public void usuarioError() {
-                updateUsuario.postValue(false);
+                updateUsuario.postValue(Utils.Valor.FALSE);
             }
         });
     }
@@ -79,13 +84,28 @@ public class LoginViewModel extends AndroidViewModel {
         loginManager.updatePassword(user, new LoginManager.UpdatePasswordCallback() {
             @Override
             public void passwordActualziadoOk() {
-                updatePassword.postValue(true);
+                updatePassword.postValue(Utils.Valor.TRUE);
                 userActual.postValue(user);
             }
 
             @Override
             public void passwordError() {
-                updatePassword.postValue(false);
+                updatePassword.postValue(Utils.Valor.FALSE);
+            }
+        });
+    }
+
+    // Elimina la cuenta del usuario
+    public void eliminarUsuario(User user) {
+        loginManager.eliminarUsuario(user, new LoginManager.EliminarUsuarioCallback() {
+            @Override
+            public void eliminarOk() {
+                eliminadoUsuario.postValue(Utils.Valor.TRUE);
+            }
+
+            @Override
+            public void eliminarError() {
+                eliminadoUsuario.postValue(Utils.Valor.FALSE);
             }
         });
     }

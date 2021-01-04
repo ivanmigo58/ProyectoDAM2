@@ -8,8 +8,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
@@ -20,16 +23,26 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.proyectoapp.Dialog.DialogConfirmar.DataDialogConfirmar;
+import com.example.proyectoapp.Dialog.DialogConfirmar.DialogConfirmarFragment;
+import com.example.proyectoapp.Dialog.DialogModificar.DataDialogModificar;
+import com.example.proyectoapp.Dialog.DialogModificar.DialogModificarFragment;
+import com.example.proyectoapp.Dialog.DialogViewModel;
 import com.example.proyectoapp.Login.LoginFragment;
 import com.example.proyectoapp.Login.LoginViewModel;
 import com.example.proyectoapp.Login.User;
 import com.example.proyectoapp.R;
+import com.example.proyectoapp.Utils;
 import com.example.proyectoapp.databinding.FragmentConfiguracionBinding;
 
 public class ConfiguracionFragment extends Fragment {
     private FragmentConfiguracionBinding binding;
     private LoginViewModel loginViewModel;
     private User user;
+    private DialogViewModel dialogViewModel;
+    private DialogModificarFragment dialogModificarFragment;
+    private DialogConfirmarFragment dialogConfirmarFragment;
+    private NavController navController;
 
 
     @Override
@@ -43,6 +56,8 @@ public class ConfiguracionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loginViewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        dialogViewModel = new ViewModelProvider(requireActivity()).get(DialogViewModel.class);
+        navController = Navigation.findNavController(view);
         // Oculto el password
         binding.textViewPassword.setTransformationMethod(new PasswordTransformationMethod());
         // Cambiar usuario
@@ -83,7 +98,19 @@ public class ConfiguracionFragment extends Fragment {
             }
         });
 
-        // Cuando cambia el usuario actualizo los textview
+        // Click en el boton borrar cuenta
+        binding.buttonEliminarCuenta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (LoginViewModel.userActual.getValue() != null) {
+                    eliminarCuenta();
+                } else {
+                    new Utils().alertDialog(getActivity(), getString(R.string.error_titulo), getString(R.string.funcion_no_disponible_para_anonimo), getString(R.string.boton_aceptar)).show();
+                }
+            }
+        });
+
+        // Cuando cambia el usuario, actualizo los textview
         loginViewModel.userActual.observe(getViewLifecycleOwner(), new Observer<User>() {
             @Override
             public void onChanged(User user) {
@@ -106,39 +133,66 @@ public class ConfiguracionFragment extends Fragment {
             }
         });
 
+        // Observa si se ha cambiado el usuario
+        loginViewModel.updateUsuario.observe(getViewLifecycleOwner(), observer -> {
+                if (observer.equals(Utils.Valor.TRUE)) {
+                    Toast.makeText(getContext(), getString(R.string.usuario_actualizado), Toast.LENGTH_LONG).show();
+                    loginViewModel.updateUsuario.postValue(Utils.Valor.NULL);
+                } else if (observer.equals(Utils.Valor.FALSE)) {
+                    Toast.makeText(getContext(), getString(R.string.error_actualizar_usuario), Toast.LENGTH_LONG).show();
+                    loginViewModel.updateUsuario.postValue(Utils.Valor.NULL);
+                }
+        });
 
+
+        // Observa cuando cambia la variable update password
+        loginViewModel.updatePassword.observe(getViewLifecycleOwner(), observer -> {
+                if (observer.equals(Utils.Valor.TRUE)) {
+                    Toast.makeText(getContext(), getString(R.string.password_actualizado), Toast.LENGTH_LONG).show();
+                    loginViewModel.updatePassword.postValue(Utils.Valor.NULL);
+                } else if (observer.equals(Utils.Valor.FALSE)) {
+                    Toast.makeText(getContext(), getString(R.string.error_actualizar_password), Toast.LENGTH_LONG).show();
+                    loginViewModel.updatePassword.postValue(Utils.Valor.NULL);
+                }
+        });
+
+        // Observo la variable de cuando se ha eliminado la cuenta del usuario
+        loginViewModel.eliminadoUsuario.observe(getViewLifecycleOwner(), observer -> {
+            // Cuenta eliminada
+            if (observer.equals(Utils.Valor.TRUE)) {
+                Toast.makeText(getContext(), getString(R.string.usuario_eliminado), Toast.LENGTH_LONG).show();
+                loginViewModel.eliminadoUsuario.postValue(Utils.Valor.NULL);
+                navController.navigate(R.id.go_to_loginFragment);
+            } else if (observer.equals(Utils.Valor.FALSE)) {
+                Toast.makeText(getContext(), getString(R.string.error_eliminar_usuario), Toast.LENGTH_LONG).show();
+                loginViewModel.eliminadoUsuario.postValue(Utils.Valor.NULL);
+            }
+        });
     }
 
+    // Cambiar usuario
     private void cambiarUsuario() {
+        // Transicion del dialogo
+        FragmentTransaction ft = new Utils().fragmentTransaction(this);
         // Creo el alert dialog
-        AlertDialog.Builder alertDialog = new Utils().alertDialog(getActivity(), getString(R.string.cambiar_usuario_titulo), getString(R.string.cambiar_usuario), getString(R.string.cancelar));
-        final EditText editText = new EditText(getActivity());
-        // Click boton aceptar
-        alertDialog.setPositiveButton(R.string.boton_aceptar, new DialogInterface.OnClickListener() {
+        dialogModificarFragment = new DialogModificarFragment(new DialogModificarFragment.ClickDialogModificarCallback() {
+            // Click boton positivo
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String nuevoUsuario = editText.getText().toString();
-                user.username = nuevoUsuario;
-                loginViewModel.updateUsuario(user, nuevoUsuario);
-            }
-        });
-        // Creo el frame layout donde va el edit text personalizado
-        FrameLayout frameLayout = new Utils().editText(getActivity(), editText);
-        alertDialog.setView(frameLayout);
-        alertDialog.show();
-
-        // TODO NO SE SI ESTO PUEDE ESTAR AKI
-        // Observa si se ha cambiado el usuario
-        loginViewModel.updateUsuario.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Toast.makeText(getContext(), getString(R.string.usuario_actualizado), Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getContext(), getString(R.string.error_actualizar_usuario), Toast.LENGTH_LONG).show();
+            public void clickButtonPositivo(String textoEditText) {
+                if (!textoEditText.equals("")) {
+                    user.username = textoEditText;
+                    loginViewModel.updateUsuario(user, user.username);
+                    dialogModificarFragment.dismiss();
                 }
             }
+
         });
+
+        dialogModificarFragment.show(ft, "dialog");
+        // Los datos del dialog
+        DataDialogModificar dataDialogModificar = new DataDialogModificar(getString(R.string.modificar_usuario_titulo), getString(R.string.modificar_usuario), getString(R.string.modificar));
+        dataDialogModificar.setColorBotonPositivo(getString(R.color.azulPrincipal));
+        dialogViewModel.dataDialogModificar.postValue(dataDialogModificar);
 
     }
 
@@ -161,34 +215,26 @@ public class ConfiguracionFragment extends Fragment {
     }
 
     private void cambiarPassword() {
+        // Transicion del dialogo
+        FragmentTransaction ft = new Utils().fragmentTransaction(this);
         // Creo el alert dialog
-        AlertDialog.Builder alertDialog = new Utils().alertDialog(getActivity(),getString(R.string.cambiar_password_titulo), getString(R.string.cambiar_password), getString(R.string.cancelar));
-        final EditText editText = new EditText(getActivity());
-        // Click boton aceptar
-        alertDialog.setPositiveButton(R.string.boton_aceptar, new DialogInterface.OnClickListener() {
+        dialogModificarFragment = new DialogModificarFragment(new DialogModificarFragment.ClickDialogModificarCallback() {
+            // Click boton positivo
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                user.password = editText.getText().toString();
-                loginViewModel.updatePassword(user);
-            }
-        });
-        // Creo el frame layout donde va el edit text personalizado
-        FrameLayout frameLayout = new Utils().editText(getActivity(), editText);
-        alertDialog.setView(frameLayout);
-        alertDialog.show();
-
-        // Observa cuando cambia la variable update password
-        loginViewModel.updatePassword.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    Toast.makeText(getContext(), getString(R.string.password_actualizado), Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getContext(), getString(R.string.error_actualizar_password), Toast.LENGTH_LONG).show();
+            public void clickButtonPositivo(String textoEditText) {
+                if (!textoEditText.equals("")) {
+                    user.password = textoEditText;
+                    loginViewModel.updatePassword(user);
+                    dialogModificarFragment.dismiss();
                 }
             }
         });
 
+        dialogModificarFragment.show(ft, "dialog");
+        // Los datos del dialog
+        DataDialogModificar dataDialogModificar = new DataDialogModificar(getString(R.string.modificar_password_titulo), getString(R.string.modificar_password), getString(R.string.modificar));
+        dataDialogModificar.setColorBotonPositivo(getString(R.color.azulPrincipal));
+        dialogViewModel.dataDialogModificar.postValue(dataDialogModificar);
     }
 
     // Click en el check de enviar correo
@@ -201,5 +247,23 @@ public class ConfiguracionFragment extends Fragment {
         else if (!isChecked) {
             binding.layoutDireccionCorreo.setVisibility(View.INVISIBLE);
         }
+    }
+
+    // Metodo para eliminar cuenta
+    private void eliminarCuenta() {
+        dialogConfirmarFragment = new DialogConfirmarFragment(new DialogConfirmarFragment.ClickDialogConfirmarCallback() {
+            @Override
+            public void clickButtonPositivo() {
+                loginViewModel.eliminarUsuario(LoginViewModel.userActual.getValue());
+                dialogConfirmarFragment.dismiss();
+            }
+        });
+        DataDialogConfirmar dataDialogConfirmar = new DataDialogConfirmar(getString(R.string.eliminar_cuenta), getString(R.string.texto_eliminar_cuenta), getString(R.string.eliminar));
+        dataDialogConfirmar.setColorTitle(getString(R.color.rojo));
+        //dataDialogConfirmar.setIcon(R.drawable.eliminar);
+        dataDialogConfirmar.setColorIcon(getString(R.color.rojo));
+        dataDialogConfirmar.setColorBotonPositivo(getString(R.color.rojo));
+        dialogViewModel.dataDialogConfirmar.postValue(dataDialogConfirmar);
+        dialogConfirmarFragment.show(getChildFragmentManager(), "Dialog");
     }
 }

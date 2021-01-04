@@ -17,4 +17,30 @@
     <string name="configuracion_vincularGoogle">Vincular a Google</string>
     <string name="configuracion_DireccionCorreo">Direccion de correo electronico:</string>
     <string name="configuracion_opcionesAvanzadas">Opciones avanzadas</string>
+    <string name="modificar_usuario">Escribe el nuevo nombre de usuario:</string>
+    <string name="boton_aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="hind_editText">Escribe aqui</string>
+    <string name="funcion_no_disponible_para_anonimo">Esta funcion no esta disponible para el usuario anonimo.</string>
+    <string name="usuario_actualizado">Usuario actualizado con exito.</string>
+    <string name="error_actualizar_usuario">Error al actualizar el usuario.</string>
+    <string name="modificar_password">Escribe la nueva contraseña:</string>
+    <string name="password_actualizado">Contraseña actualizada con exito.</string>
+    <string name="error_actualizar_password">Error al actualizar la contraseña.</string>
+    <string name="error_titulo">Error</string>
+    <string name="modificar_password_titulo">Modificar contraseña</string>
+    <string name="modificar_usuario_titulo">Modificar usuario</string>
+    <string name="modificar">Modificar</string>
+    <string name="eliminar_cuenta">Eliminar cuenta</string>
+    <string name="titulo_dialog">Titulo</string>
+    <string name="texto_dialog">Texto</string>
+    <string name="hint_editText">Escribe aqui</string>
+    <string name="usuario_eliminado">Cuenta eliminada con exito.</string>
+    <string name="error_eliminar_usuario">Error al eliminar la cuenta del usuario.</string>
+    <string name="texto_eliminar_cuenta">¿Estas seguro de que deseas eliminar la cuenta actual? No la podras recuperar.</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="texto_dialog_reportar">¿Deseas reportar un incidente en este lugar?</string>
+    <string name="texto_switch_dialog_reportar">Añadir comentario</string>
+    <string name="reportar">Reportar</string>
+
 </resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".Dialog.DialogModificar.DialogModificarFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/fragmentDialogModificar"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titulo"
+            android:text="@string/titulo_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/titulo_dialog"/>
+
+        <TextView
+            android:id="@+id/texto"
+            android:text="@string/texto_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/texto_dialog"/>
+
+        <EditText
+            android:id="@+id/editText"
+            style="@style/edittext_dialog"
+            android:hint="@string/hint_editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/boton_negativo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/cancelar"
+                style="@style/boton_negativo_dialog"/>
+
+            <TextView
+                android:id="@+id/boton_positivo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:text="@string/boton_aceptar"
+                style="@style/boton_positivo_dialog"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

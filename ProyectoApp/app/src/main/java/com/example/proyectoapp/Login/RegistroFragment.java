@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.proyectoapp.R;
+import com.example.proyectoapp.Utils;
 import com.example.proyectoapp.databinding.FragmentRegistroBinding;
 
 public class RegistroFragment extends Fragment {
@@ -45,7 +46,7 @@ public class RegistroFragment extends Fragment {
         binding.buttonRegistre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usuario = binding.editTextUsuario.getText().toString();
+                usuario = binding.editTextUsuario.getText().toString();
                 String password = binding.editTextContrasenya.getText().toString();
                 String passwordRepetir = binding.editTextRepetirContrasenya.getText().toString();
                 // Siempre que todos los campos esten rellenados
@@ -67,17 +68,16 @@ public class RegistroFragment extends Fragment {
         });
 
         // Observo si se han podido insertar los datos
-        loginViewModel.registroResult.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
+        loginViewModel.registroResult.observe(getViewLifecycleOwner(), observer -> {
                 // Si se ha podido insertar los datos
-                if (aBoolean) {
+                if (observer.equals(Utils.Valor.TRUE)) {
                     Toast.makeText(getContext(), "Usuario registrado con exito!", Toast.LENGTH_LONG).show();
+                    //loginViewModel.registroResult.postValue(Utils.Valor.NULL);
                     navController.navigate(R.id.go_to_EventosFragment);
-                } else {
-                    Toast.makeText(getContext(), "El usuario ya existe", Toast.LENGTH_LONG);
+                } else if (observer.equals(Utils.Valor.FALSE)) {
+                    Toast.makeText(getContext(), "El usuario "+usuario+" ya existe", Toast.LENGTH_LONG).show();
+                    loginViewModel.registroResult.postValue(Utils.Valor.NULL);
                 }
-            }
         });
 
         // Click entrar como anonimo
