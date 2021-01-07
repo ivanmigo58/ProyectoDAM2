@@ -13,7 +13,7 @@
 
     <!--Titulo competicion-->
     <style name="titulo_competiciones" parent="TextAppearance.AppCompat">
-        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">start|center_vertical</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textSize">16dp</item>
@@ -31,6 +31,16 @@
         <item name="android:paddingLeft">5dp</item>
     </style>
 
+    <!--Minuto partido Sin Comenzar-->
+    <style name="minuto_partido_sin_comenzar" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#4D000000</item>
+        <item name="android:paddingLeft">15dp</item>
+    </style>
+
     <!--Minuto partido-->
     <style name="minuto_partido" parent="TextAppearance.AppCompat">
         <item name="android:layout_width">0dp</item>
@@ -39,6 +49,30 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/rojo</item>
         <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <!--Nombre Equipos Partidos-->
+    <style name="nombre_equipos_partidos" parent="TextAppearance.AppCompat">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center_horizontal|bottom</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#99000000</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <!--   Separador Vertical-->
+    <style name="separadorVertical" parent="TextAppearance.AppCompat" >
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/darker_gray</item>
+    </style>
+
+    <!-- Flechas del desplegable-->
+    <style name="iconosDesplpegable" parent="TextAppearance.AppCompat">
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_gravity">center_vertical</item>
     </style>
 
 

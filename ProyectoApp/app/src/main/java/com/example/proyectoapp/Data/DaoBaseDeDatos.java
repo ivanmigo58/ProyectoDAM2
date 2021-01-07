@@ -7,6 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.proyectoapp.Eventos.Partidos;
 import com.example.proyectoapp.Login.User;
 
 import java.util.List;
@@ -42,6 +43,17 @@ public interface DaoBaseDeDatos {
     // Elimina un usuario
     @Delete
     void eliminarUsuario(User user);
+
+    // Insertar Partidos
+    @Insert
+    void insertarPartidos(Partidos partidos);
+
+    // Comprueba si el partido con los siguientes datos existe
+    @Query("SELECT * FROM Partidos where equipoLocal = :equipoLocal AND equipoVisitante = :equipoVisitante AND horaInicio = :horaInicio")
+    Partidos comprobarPartido(String equipoLocal, String equipoVisitante, String horaInicio);
+    // Obtener lista de partidos
+    LiveData<List<Partidos>> obtenerPartidos(String equipoLocal, String equipoVisitante, String horaInicio);
+
 
 
 }

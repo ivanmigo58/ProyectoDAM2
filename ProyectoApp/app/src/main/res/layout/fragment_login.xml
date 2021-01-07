@@ -60,10 +60,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/bordes_redondos"
+                    android:background="@drawable/noticias_redondos"
                     android:textColor="@color/black"
-                    android:backgroundTint="#FFFFFF"
-                    android:text="@string/login" />
+                    android:text="@string/login"
+                    style="@style/buttons"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/buttonRegistre"
@@ -72,7 +72,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:text="@string/registrarse"
-                    android:background="@drawable/bordes_redondos"
+                    android:background="@drawable/noticias_redondos"
                     style="@style/buttons" />
             </LinearLayout>
 

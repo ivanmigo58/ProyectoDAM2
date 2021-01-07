@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectoapp.Eventos.EventosFragment;
 import com.example.proyectoapp.databinding.FragmentTabbedGraphBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -20,6 +21,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class TabbedGraphFragment extends Fragment {
 
     private FragmentTabbedGraphBinding binding;
+    private static String lugar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +38,7 @@ public class TabbedGraphFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.viewPager.setAdapter(new FragmentStateAdapter(this) {
+
             @NonNull
             @Override
             public Fragment createFragment(int position) {
@@ -47,6 +50,7 @@ public class TabbedGraphFragment extends Fragment {
                     case 2:
                         return new FavoritosFragment();
                 }
+
             }
 
             // El numero de TABS que tenemos

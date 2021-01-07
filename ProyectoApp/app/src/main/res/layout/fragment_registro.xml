@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"
-                android:background="@drawable/bordes_redondos"
+                android:background="@drawable/noticias_redondos"
                 android:text="@string/registrarse"
                 style="@style/buttons" />
 

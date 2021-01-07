@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".EventosFragment"
+    tools:context=".Eventos.EventosFragment"
     android:orientation="vertical">
 
     <HorizontalScrollView
@@ -22,9 +22,9 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 app:cardCornerRadius="8dp"
-                android:layout_margin="10dp"
+                android:layout_margin="5dp"
                 android:backgroundTint="@color/black"
-                android:background="@drawable/bordes_redondos">
+                android:background="@drawable/noticias_redondos">
 
 
                 <ImageView
@@ -32,8 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/casemirohazard"
-                    android:background="@drawable/bordes_redondos"/>
+                    android:src="@drawable/casemirohazard" />
 
 
                 <TextView
@@ -55,14 +54,13 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 app:cardCornerRadius="8dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/bordes_redondos">
+                android:layout_margin="5dp"
+                android:background="@drawable/noticias_redondos">
 
                 <ImageView
                     android:id="@+id/add2_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bordes_redondos"
                     android:scaleType="centerCrop"
                     android:src="@drawable/champions" />
 
@@ -85,14 +83,13 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 app:cardCornerRadius="8dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/bordes_redondos">
+                android:layout_margin="5dp"
+                android:background="@drawable/noticias_redondos">
 
                 <ImageView
                     android:id="@+id/add3_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bordes_redondos"
                     android:scaleType="centerCrop"
                     android:src="@drawable/europaleague"></ImageView>
 
@@ -116,14 +113,13 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 app:cardCornerRadius="8dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/bordes_redondos">
+                android:layout_margin="5dp"
+                android:background="@drawable/noticias_redondos">
 
                 <ImageView
                     android:id="@+id/add4_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bordes_redondos"
                     android:scaleType="centerCrop"
                     android:src="@drawable/barsamadrid" />
 
@@ -146,14 +142,13 @@
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 app:cardCornerRadius="8dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/bordes_redondos">
+                android:layout_margin="5dp"
+                android:background="@drawable/noticias_redondos">
 
                 <ImageView
                     android:id="@+id/add5_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bordes_redondos"
                     android:scaleType="centerCrop"
                     android:src="@drawable/diogojota" />
 
@@ -211,40 +206,320 @@
             android:src="@drawable/champion_icon"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Champions League"
             style="@style/titulo_competiciones"/>
 
+        <ImageView
+            android:layout_gravity="right"
+            android:id="@+id/buttonDesplegarPartidos"
+            style="@style/iconosDesplpegable"
+            android:src="@drawable/ic_baseline_expand_more_24" />
+
+        <ImageView
+            android:id="@+id/buttobRecogerPartidos"
+            style="@style/iconosDesplpegable"
+            android:src="@drawable/ic_baseline_expand_less_24"
+            android:visibility="gone"/>
     </LinearLayout>
+
+    <!-- Separador-->
+    <View
+        android:layout_width="match_parent"
+        style="@style/separadorView"/>
 
     <LinearLayout
-        android:id="@+id/partido1"
+        android:id="@+id/partidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/partido1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
-            <TextView
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="21:00"
-                style="@style/hora_partido"/>
+                android:orientation="vertical"
+                android:layout_gravity="left">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21:00"
+                    style="@style/hora_partido"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="-"
+                    style="@style/minuto_partido_sin_comenzar"/>
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="10dp"
+                style="@style/separadorVertical"/>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Real Madrid"
+                    style="@style/nombre_equipos_partidos"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Inter"
+                    style="@style/nombre_equipos_partidos"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="85'"
-                style="@style/minuto_partido"/>
+                android:orientation="horizontal"
+                android:gravity="right">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        style="@style/minuto_partido"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        style="@style/minuto_partido"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    style="@style/separadorVertical"/>
+
+                <ToggleButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/alertas_selector"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:textOff=""
+                    android:textOn="" />
+
+            </LinearLayout>
+
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/partido2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18:55"
+                    style="@style/hora_partido"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="85'"
+                    style="@style/minuto_partido"/>
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="10dp"
+                style="@style/separadorVertical"/>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Barcelona"
+                    style="@style/nombre_equipos_partidos"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Dinamo Kiev"
+                    style="@style/nombre_equipos_partidos"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        style="@style/minuto_partido"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        style="@style/minuto_partido"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    style="@style/separadorVertical"/>
+
+                <ToggleButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/alertas_selector"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:textOff=""
+                    android:textOn="" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/partido3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21:00"
+                    style="@style/hora_partido"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="-"
+                    style="@style/minuto_partido_sin_comenzar"/>
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="10dp"
+                style="@style/separadorVertical"/>
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Real Madrid"
+                    style="@style/nombre_equipos_partidos"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Inter"
+                    style="@style/nombre_equipos_partidos"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        style="@style/minuto_partido"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        style="@style/minuto_partido"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    style="@style/separadorVertical"/>
+
+                <ToggleButton
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/alertas_selector"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:textOff=""
+                    android:textOn="" />
+
+            </LinearLayout>
 
     </LinearLayout>
 
-
+    </LinearLayout>
 </LinearLayout>
