@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCompeticion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iconoCompeticion"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:paddingLeft="5dp"
+            android:src="@drawable/champion_icon"/>
+
+        <TextView
+            android:id="@+id/nombreCompeticion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Champions League"
+            style="@style/titulo_competiciones"/>
+
+    </LinearLayout>
+
+    <!-- Separador-->
+    <View
+        android:layout_width="match_parent"
+        style="@style/separadorView"/>
+
+</androidx.cardview.widget.CardView>

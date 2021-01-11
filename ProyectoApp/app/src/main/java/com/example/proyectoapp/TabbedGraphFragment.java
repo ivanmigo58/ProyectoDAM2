@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.proyectoapp.Eventos.EventosFragment;
+import com.example.proyectoapp.Ligas.LigasFragment;
 import com.example.proyectoapp.databinding.FragmentTabbedGraphBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;

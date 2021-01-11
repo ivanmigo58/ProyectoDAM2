@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/partido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="left">
+
+            <TextView
+                android:id="@+id/horaInicioPartido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21:00"
+                style="@style/hora_partido"/>
+
+            <TextView
+                android:id="@+id/minPartido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="-"
+                style="@style/minuto_partido"/>
+        </LinearLayout>
+
+        <View
+            android:layout_marginLeft="10dp"
+            style="@style/separadorVertical"/>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="left">
+
+            <TextView
+                android:id="@+id/equipoLocal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Madrid"
+                style="@style/nombre_equipos_partidos"/>
+
+            <TextView
+                android:id="@+id/equipoVisitante"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Inter"
+                style="@style/nombre_equipos_partidos"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/resultadoLocal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    style="@style/minuto_partido"/>
+
+                <TextView
+                    android:id="@+id/resultadoVisitante"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    style="@style/minuto_partido"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                style="@style/separadorVertical"/>
+
+            <ToggleButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/alertas_selector"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:textOff=""
+                android:textOn="" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

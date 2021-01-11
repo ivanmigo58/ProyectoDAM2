@@ -7,7 +7,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.proyectoapp.Eventos.Partidos;
+import com.example.proyectoapp.Competiciones.Competiciones;
+import com.example.proyectoapp.Partidos.Partidos;
 import com.example.proyectoapp.Login.User;
 
 import java.util.List;
@@ -44,15 +45,49 @@ public interface DaoBaseDeDatos {
     @Delete
     void eliminarUsuario(User user);
 
+
+
     // Insertar Partidos
     @Insert
     void insertarPartidos(Partidos partidos);
 
     // Comprueba si el partido con los siguientes datos existe
-    @Query("SELECT * FROM Partidos where equipoLocal = :equipoLocal AND equipoVisitante = :equipoVisitante AND horaInicio = :horaInicio")
-    Partidos comprobarPartido(String equipoLocal, String equipoVisitante, String horaInicio);
+    @Query("SELECT * FROM Partidos where equipoLocal = :equipoLocal AND equipoVisitante = :equipoVisitante AND horaInicio = :horaInicio AND minPartido = :minPartido AND resultadoLocal = :resultadoLocal AND resultadoVisitante = :resultadoVisitante LIMIT 1")
+    Partidos comprobarPartido(String equipoLocal, String equipoVisitante, String horaInicio, String minPartido, String resultadoLocal, String resultadoVisitante);
+
     // Obtener lista de partidos
-    LiveData<List<Partidos>> obtenerPartidos(String equipoLocal, String equipoVisitante, String horaInicio);
+    @Query("SELECT * FROM Partidos")
+    LiveData<List<Partidos>> obtenerPartidos();
+
+    // Eliminar un partido
+    @Delete
+    void eliminarPartido(Partidos partidos);
+
+    // Modificar partido
+    @Update
+    void modificarPartido(Partidos partidos);
+
+
+
+    // Insertar competiciones
+    @Insert
+    void insertarCompeticiones(Competiciones competiciones);
+
+    // Comprueba si la competicion existe
+    @Query("SELECT * FROM Competiciones where nombre = :nombre LIMIT 1")
+    Competiciones comprobarCompeticion(String nombre);
+
+    // Obtener lista de competiciones
+    @Query("SELECT * FROM Competiciones")
+    LiveData<List<Competiciones>> obtenerCompeticiones();
+
+    // Eliminar una competicion
+    @Delete
+    void eliminarCompeticion(Competiciones competiciones);
+
+    //  Modificar competicion
+    @Update
+    void modificarCompeticion(Competiciones competiciones);
 
 
 

@@ -2,21 +2,15 @@ package com.example.proyectoapp.Data;
 
 import android.content.Context;
 
-import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
 import androidx.room.Database;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.Query;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.Update;
 
+import com.example.proyectoapp.Competiciones.Competiciones;
+import com.example.proyectoapp.Partidos.Partidos;
 import com.example.proyectoapp.Login.User;
 
-import java.util.List;
-
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class, Partidos.class, Competiciones.class}, version = 5, exportSchema = false)
 public abstract class BaseDeDatos extends RoomDatabase{
     private static volatile BaseDeDatos INSTANCIA;
 

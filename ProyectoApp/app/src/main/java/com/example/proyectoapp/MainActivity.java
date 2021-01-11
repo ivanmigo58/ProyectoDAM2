@@ -8,16 +8,17 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 
-import com.example.proyectoapp.Eventos.Noticias;
-import com.example.proyectoapp.Eventos.Partidos;
+import com.example.proyectoapp.Data.DaoBaseDeDatos;
 import com.example.proyectoapp.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    private DaoBaseDeDatos daoBaseDeDatos;
+    private Executor executor = Executors.newSingleThreadExecutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +35,9 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
         NavigationUI.setupWithNavController(binding.toolbar, navController, appBarConfiguration);
 
-        // Cuando la base de datos este vacia
-        insertarDatosDefecto();
-
-
-        // La DB no esta vacia, no hago nada
-
     }
 
-    private void insertarDatosDefecto() {
-        List<Noticias> listNoticias = new ArrayList<>();
-        listNoticias.add(new Noticias("covid", "/src/image"));
-        listNoticias.add(new Noticias("covid", "/src/image"));
-        listNoticias.add(new Noticias("covid", "/src/image"));
 
-        List<Partidos> listPartidos = new ArrayList<>();
-        listPartidos.add(new Partidos("21:00","Real Madrid", "Inter"));
-        listPartidos.add(new Partidos("18:55","Barcelona", "Dinamo Kiev"));
-        listPartidos.add(new Partidos("21:00","Atalanta", "Liverpool"));
-
-    }
 
 
 }

@@ -1,9 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LigasFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Ligas.LigasFragment"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clasificaciones de competiciones"
+            style="@style/titulo_principal_competiciones"/>
+
+    </LinearLayout>
+
+    <!-- Separador-->
+    <View
+        style="@style/separadorView"
+        android:layout_width="match_parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listaLigas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="1"/>
 
 
-</FrameLayout>
+
+
+</LinearLayout>
