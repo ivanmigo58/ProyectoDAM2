@@ -5,13 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
 
-    <fragment
-        android:id="@+id/eventosFragment"
-        android:name="com.example.proyectoapp.Eventos.EventosFragment"
-        android:label="fragment_eventos"
-        tools:layout="@layout/fragment_eventos" >
-    </fragment>
-
     <action
         android:id="@+id/go_to_EventosFragment"
         app:destination="@+id/tabbed_graph"/>
@@ -34,7 +27,7 @@
 
     <fragment
         android:id="@+id/tabbed_graph"
-        android:name="com.example.proyectoapp.TabbedGraphFragment"
+        android:name="com.example.proyectoapp.TabbedPrincipal.TabbedGraphFragment"
         android:label="fragment_tabbed_graph"
         tools:layout="@layout/fragment_tabbed_graph" />
     <fragment
@@ -71,4 +64,41 @@
         android:name="com.example.proyectoapp.Dialog.DialogReportar.DialogReportarFragment"
         android:label="fragment_dialog_reportar"
         tools:layout="@layout/fragment_dialog_reportar" />
+
+    <fragment
+        android:id="@+id/tabbedPartidosFragment"
+        android:name="com.example.proyectoapp.TabbedPartidos.TabbedPartidosFragment"
+        android:label="fragment_tabbed_partidos"
+        tools:layout="@layout/fragment_tabbed_partidos" />
+
+    <action
+        android:id="@+id/go_to_detallesPartido"
+        app:destination="@+id/tabbedPartidosFragment"/>
+    <fragment
+        android:id="@+id/tabbedEquipoFragment"
+        android:name="com.example.proyectoapp.TabbedInfoEquipo.TabbedEquipoFragment"
+        android:label="fragment_tabbed_equipo"
+        tools:layout="@layout/fragment_tabbed_equipo" />
+
+    <action
+        android:id="@+id/go_to_infoEquipo"
+        app:destination="@+id/tabbedEquipoFragment"/>
+    <fragment
+        android:id="@+id/clasificacionChampionsFragment"
+        android:name="com.example.proyectoapp.ClasificacionChampionsFragment"
+        android:label="fragment_clasificacion_champions"
+        tools:layout="@layout/fragment_clasificacion_champions" />
+
+    <action
+        android:id="@+id/go_to_clasificacionChampions"
+        app:destination="@id/clasificacionChampionsFragment"/>
+    <fragment
+        android:id="@+id/clasificacionLigaFragment"
+        android:name="com.example.proyectoapp.ClasificacionLigaFragment"
+        android:label="fragment_clasificacion_liga"
+        tools:layout="@layout/fragment_clasificacion_liga" />
+
+    <action
+        android:id="@+id/go_to_clasificacionLiga"
+        app:destination="@+id/clasificacionLigaFragment"/>
 </navigation>

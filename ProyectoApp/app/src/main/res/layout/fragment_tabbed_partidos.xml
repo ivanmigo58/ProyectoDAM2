@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detallesPartido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/botonAtras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/nombreCompeticionPartido"
+            style="@style/nombre_competicion_infopartido"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="6dp"
+            android:gravity="center_horizontal"
+            android:text="Champions League"
+            app:layout_constraintBottom_toTopOf="@+id/fechaPartido"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/escudoLocal"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/champion_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nombreCompeticionPartido"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/separadorMarcador"
+            style="@style/marcador_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="-"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/escudoVisitante"
+            app:layout_constraintStart_toEndOf="@+id/escudoLocal"
+            app:layout_constraintTop_toBottomOf="@+id/nombreCompeticionPartido" />
+
+        <TextView
+            android:id="@+id/resultadoLocal"
+            style="@style/marcador_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/separadorMarcador"
+            app:layout_constraintStart_toEndOf="@+id/escudoLocal"
+            app:layout_constraintTop_toBottomOf="@+id/nombreCompeticionPartido" />
+
+        <TextView
+            android:id="@+id/resultadoVisitante"
+            style="@style/marcador_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/escudoVisitante"
+            app:layout_constraintStart_toEndOf="@+id/separadorMarcador"
+            app:layout_constraintTop_toBottomOf="@+id/nombreCompeticionPartido" />
+
+        <ImageView
+            android:id="@+id/escudoVisitante"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/europaleague_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/nombreCompeticionPartido"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nombreLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fc Barcelona"
+            style="@style/info_detalles_partido"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/escudoLocal"
+            app:layout_constraintStart_toStartOf="@+id/escudoLocal"
+            app:layout_constraintTop_toBottomOf="@+id/escudoLocal" />
+
+        <TextView
+            android:id="@+id/nombreVisitante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dinamo KIev"
+            style="@style/info_detalles_partido"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/escudoVisitante"
+            app:layout_constraintStart_toStartOf="@+id/escudoVisitante"
+            app:layout_constraintTop_toBottomOf="@+id/escudoVisitante" />
+
+        <TextView
+            android:id="@+id/minutoEnVivo"
+            style="@style/info_detalles_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="85'"
+            app:layout_constraintBottom_toBottomOf="@+id/escudoVisitante"
+            app:layout_constraintEnd_toStartOf="@+id/escudoVisitante"
+            app:layout_constraintStart_toEndOf="@+id/escudoLocal"
+            app:layout_constraintTop_toBottomOf="@+id/separadorMarcador" />
+
+        <TextView
+            android:id="@+id/fechaPartido"
+            style="@style/info_detalles_partido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="05.11.2020"
+            app:layout_constraintBottom_toTopOf="@+id/horaInicioPartido"
+            app:layout_constraintEnd_toEndOf="@+id/nombreCompeticionPartido"
+            app:layout_constraintStart_toStartOf="@+id/nombreCompeticionPartido"
+            app:layout_constraintTop_toBottomOf="@+id/nombreCompeticion" />
+
+        <TextView
+            android:id="@+id/horaInicioPartido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18:55"
+            style="@style/info_detalles_partido"
+            app:layout_constraintBottom_toTopOf="@+id/separadorMarcador"
+            app:layout_constraintEnd_toEndOf="@+id/nombreCompeticionPartido"
+            app:layout_constraintStart_toStartOf="@+id/nombreCompeticionPartido" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

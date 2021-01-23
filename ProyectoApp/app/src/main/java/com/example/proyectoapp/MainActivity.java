@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
 
         // Los fragments que meto aqui, saldra el boton de hamburguesa
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.tabbed_graph,R.id.configuracionFragment)
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.tabbed_graph,R.id.configuracionFragment,R.id.tabbedPartidosFragment)
                 .setOpenableLayout(binding.drawerLayout)
                 .build();
 

@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.proyectoapp.Data.BaseDeDatos;
 import com.example.proyectoapp.Data.DaoBaseDeDatos;
-import com.example.proyectoapp.Competiciones.Competiciones;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -38,13 +37,13 @@ public class PartidosManager {
     }
 
     // Insertar datos de partido
-    void insertarDatosPartidos(Partidos partidos, InsertarDatosCallback insertarDatosCallback) {
+    void insertarDatosPartidos(Partido partido, InsertarDatosCallback insertarDatosCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.insertarPartidos(partidos);
+                daoBaseDeDatos.insertarPartidos(partido);
                 // Compruebo si se ha insertado
-                if (daoBaseDeDatos.comprobarPartido(partidos.equipoLocal, partidos.equipoVisitante, partidos.horaInicio, partidos.minPartido, partidos.resultadoLocal, partidos.resultadoVisitante) != null) {
+                if (daoBaseDeDatos.comprobarPartido(partido.equipoLocal, partido.equipoVisitante, partido.horaInicio, partido.minPartido, partido.resultadoLocal, partido.resultadoVisitante, partido.competicion, partido.enVivo, partido.fecha) != null) {
                     insertarDatosCallback.insertOk();
                 }
                 // No existe el partido insertado
@@ -57,19 +56,19 @@ public class PartidosManager {
 
 
     // Devuelve una lista de todos los partidos
-    LiveData<List<Partidos>> obtenerPartidos() {
+    LiveData<List<Partido>> obtenerPartidos() {
         return daoBaseDeDatos.obtenerPartidos();
     }
 
 
     // Elimina un partido
-    void eliminarPartido(Partidos partidos, EliminarPartidoCallback eliminarPartidoCallback) {
+    void eliminarPartido(Partido partido, EliminarPartidoCallback eliminarPartidoCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.eliminarPartido(partidos);
+                daoBaseDeDatos.eliminarPartido(partido);
                 // Compruebo si se ha eliminado el partido
-                if (daoBaseDeDatos.comprobarPartido(partidos.equipoLocal, partidos.equipoVisitante, partidos.horaInicio, partidos.minPartido, partidos.resultadoLocal, partidos.resultadoVisitante) == null) {
+                if (daoBaseDeDatos.comprobarPartido(partido.equipoLocal, partido.equipoVisitante, partido.horaInicio, partido.minPartido, partido.resultadoLocal, partido.resultadoVisitante, partido.competicion, partido.enVivo, partido.fecha) == null) {
                     eliminarPartidoCallback.eliminadoOk();
                 } else {
                     eliminarPartidoCallback.eliminadoError();
@@ -80,13 +79,13 @@ public class PartidosManager {
 
 
     // Modificar los datos del partido
-    void modificarPartidos(Partidos partidos, ModificarPartidosCallback modificarPartidosCallback) {
+    void modificarPartidos(Partido partido, ModificarPartidosCallback modificarPartidosCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.modificarPartido(partidos);
+                daoBaseDeDatos.modificarPartido(partido);
                 // Compruebo si existe, una vez modificado
-                if (daoBaseDeDatos.comprobarPartido(partidos.equipoLocal, partidos.equipoVisitante, partidos.horaInicio, partidos.minPartido, partidos.resultadoLocal, partidos.resultadoVisitante) != null) {
+                if (daoBaseDeDatos.comprobarPartido(partido.equipoLocal, partido.equipoVisitante, partido.horaInicio, partido.minPartido, partido.resultadoLocal, partido.resultadoVisitante, partido.competicion, partido.enVivo, partido.fecha) != null) {
                     modificarPartidosCallback.modificadoOk();
                 } else {
                     modificarPartidosCallback.modificadoError();

@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData;
 
 import com.example.proyectoapp.Data.BaseDeDatos;
 import com.example.proyectoapp.Data.DaoBaseDeDatos;
-import com.example.proyectoapp.Partidos.PartidosManager;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -36,13 +35,13 @@ public class CompeticionesManager {
     }
 
     // Insertar datos de competicion
-    void insertarDatosCompeticiones(Competiciones competiciones, InsertarDatosCallback insertarDatosCallback) {
+    void insertarDatosCompeticiones(Competicion competicion, InsertarDatosCallback insertarDatosCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.insertarCompeticiones(competiciones);
+                daoBaseDeDatos.insertarCompeticiones(competicion);
                 // Compruebo si se ha insertado
-                if (daoBaseDeDatos.comprobarCompeticion(competiciones.nombre) != null) {
+                if (daoBaseDeDatos.comprobarCompeticion(competicion.nombre) != null) {
                     insertarDatosCallback.insertOk();
                 }
                 // No existe la competicion insertado
@@ -54,18 +53,18 @@ public class CompeticionesManager {
     }
 
     // Devuelven una lista de todas las comepticiones
-    LiveData<List<Competiciones>> obtenerCompeticiones() {
+    LiveData<List<Competicion>> obtenerCompeticiones() {
         return daoBaseDeDatos.obtenerCompeticiones();
     }
 
     // Elimina una competicion
-    void eliminarCompeticion(Competiciones competiciones, EliminarCompeticionCallback eliminarCompeticionCallback) {
+    void eliminarCompeticion(Competicion competicion, EliminarCompeticionCallback eliminarCompeticionCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.eliminarCompeticion(competiciones);
+                daoBaseDeDatos.eliminarCompeticion(competicion);
                 // Compruebo si se ha eliminado el partido
-                if (daoBaseDeDatos.comprobarCompeticion(competiciones.nombre) == null) {
+                if (daoBaseDeDatos.comprobarCompeticion(competicion.nombre) == null) {
                     eliminarCompeticionCallback.eliminadoOk();
                 } else {
                     eliminarCompeticionCallback.eliminadoError();
@@ -75,13 +74,13 @@ public class CompeticionesManager {
     }
 
     // Modificar los datos de una competicion
-    void modificarCompeticion(Competiciones competiciones, ModificarCompeticionesCallback modificarCompeticionesCallback) {
+    void modificarCompeticion(Competicion competicion, ModificarCompeticionesCallback modificarCompeticionesCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.modificarCompeticion(competiciones);
+                daoBaseDeDatos.modificarCompeticion(competicion);
                 // Compruebo si existe, una vez modificado
-                if (daoBaseDeDatos.comprobarCompeticion(competiciones.nombre) != null) {
+                if (daoBaseDeDatos.comprobarCompeticion(competicion.nombre) != null) {
                     modificarCompeticionesCallback.modificadoOk();
                 } else {
                     modificarCompeticionesCallback.modificadoError();

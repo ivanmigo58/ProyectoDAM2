@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
         <LinearLayout
             android:id="@+id/linearLayoutCompeticion"
             android:layout_width="match_parent"
@@ -42,6 +43,7 @@
                 style="@style/iconosDesplpegable"
                 android:src="@drawable/ic_baseline_expand_less_24"
                 android:visibility="gone"/>
+
         </LinearLayout>
 
         <!-- Separador-->
@@ -51,7 +53,7 @@
 
 
         <LinearLayout
-            android:id="@+id/partidos"
+            android:id="@+id/partido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -66,5 +68,11 @@
 
         </LinearLayout>
 
+
+
+
     </LinearLayout>
+
+
+
 </androidx.cardview.widget.CardView>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--Titulo principal competiciones-->
+    <!--Titulo principal competicion-->
     <style name="titulo_principal_competiciones" parent="TextAppearance.AppCompat">
         <item name="android:layout_width">0dp</item>
         <item name="android:gravity">start|center_vertical</item>

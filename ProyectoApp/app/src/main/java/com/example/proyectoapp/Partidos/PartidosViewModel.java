@@ -2,17 +2,14 @@ package com.example.proyectoapp.Partidos;
 
 import android.app.Application;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.proyectoapp.Competiciones.Competiciones;
-import com.example.proyectoapp.Partidos.Partidos;
-import com.example.proyectoapp.Partidos.PartidosManager;
 import com.example.proyectoapp.Utils;
 
 import java.util.List;
+import java.util.jar.Attributes;
 
 public class PartidosViewModel extends AndroidViewModel {
 
@@ -21,6 +18,8 @@ public class PartidosViewModel extends AndroidViewModel {
     MutableLiveData<Utils.Valor> insertResult = new MutableLiveData<>();
     public MutableLiveData<Utils.Valor> eliminandoResult = new MutableLiveData<>();
     public MutableLiveData<Utils.Valor> modificandoPartidoResult = new MutableLiveData<>();
+    public  MutableLiveData<Partido> partidoSeleccionado = new MutableLiveData<>();
+    public  MutableLiveData<String> equipoSeleccionado = new MutableLiveData<>();
 
 
 
@@ -30,8 +29,8 @@ public class PartidosViewModel extends AndroidViewModel {
     }
 
     // Insertar datos partido
-    public void insertarDatosPartidos(Partidos partidos) {
-        partidosManager.insertarDatosPartidos(partidos, new PartidosManager.InsertarDatosCallback() {
+    public void insertarDatosPartidos(Partido partido) {
+        partidosManager.insertarDatosPartidos(partido, new PartidosManager.InsertarDatosCallback() {
             @Override
             public void insertOk() {
                 insertResult.postValue(Utils.Valor.TRUE);
@@ -47,14 +46,34 @@ public class PartidosViewModel extends AndroidViewModel {
 
 
     // Obtiene una lista con los partidos
-    public LiveData<List<Partidos>> obtenerPartidos() {
+    public LiveData<List<Partido>> obtenerPartidos() {
         return partidosManager.obtenerPartidos();
     }
 
 
+    // Mostrar pantalla del partido que selecciones
+    public void seleccionar(Partido partido) {
+        partidoSeleccionado.setValue(partido);
+    }
+    public MutableLiveData<Partido> seleccionado(){
+        return partidoSeleccionado;
+    }
+
+    public void seleccionarEquipoLocal(Partido partido) {
+        equipoSeleccionado.setValue(partido.equipoLocal);
+    }
+
+    public void seleccionarEquipoVisitante(Partido partido) {
+        equipoSeleccionado.setValue(partido.equipoVisitante);
+    }
+    public MutableLiveData<String> equipoSeleccionado(){
+        return equipoSeleccionado;
+    }
+
+
     // Eliminar partido
-    public void eliminarPartido(Partidos partidos) {
-        partidosManager.eliminarPartido(partidos, new PartidosManager.EliminarPartidoCallback() {
+    public void eliminarPartido(Partido partido) {
+        partidosManager.eliminarPartido(partido, new PartidosManager.EliminarPartidoCallback() {
             @Override
             public void eliminadoOk() {
                 eliminandoResult.postValue(Utils.Valor.TRUE);
@@ -69,8 +88,8 @@ public class PartidosViewModel extends AndroidViewModel {
 
 
     // Modificar datos de un partido
-    public void modificarPartido(Partidos partidos) {
-        partidosManager.modificarPartidos(partidos, new PartidosManager.ModificarPartidosCallback() {
+    public void modificarPartido(Partido partido) {
+        partidosManager.modificarPartidos(partido, new PartidosManager.ModificarPartidosCallback() {
             @Override
             public void modificadoOk() {
                 modificandoPartidoResult.postValue(Utils.Valor.TRUE);

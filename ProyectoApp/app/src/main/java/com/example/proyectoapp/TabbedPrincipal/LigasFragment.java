@@ -1,4 +1,4 @@
-package com.example.proyectoapp.Ligas;
+package com.example.proyectoapp.TabbedPrincipal;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -7,19 +7,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.proyectoapp.Competiciones.Competiciones;
+import com.example.proyectoapp.Competiciones.Competicion;
 import com.example.proyectoapp.Competiciones.CompeticionesViewModel;
-import com.example.proyectoapp.Eventos.EventosFragment;
-import com.example.proyectoapp.Partidos.PartidosViewModel;
 import com.example.proyectoapp.R;
 import com.example.proyectoapp.databinding.FragmentLigasBinding;
-import com.example.proyectoapp.databinding.ViewholderCompeticionBinding;
 import com.example.proyectoapp.databinding.ViewholderListaligasBinding;
 
 import java.util.List;
@@ -29,6 +28,7 @@ public class LigasFragment extends Fragment {
     FragmentLigasBinding binding;
     ViewholderListaligasBinding viewholderListaligasBinding;
     private CompeticionesViewModel competicionesViewModel;
+    private NavController navController;
 
 
     @Override
@@ -43,28 +43,34 @@ public class LigasFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         competicionesViewModel = new ViewModelProvider(requireActivity()).get(CompeticionesViewModel.class);
 
+        navController = NavHostFragment.findNavController(requireParentFragment());
 
-        LigasFragment.CompeticionesAdapter competicionesAdapter = new LigasFragment.CompeticionesAdapter();
+
+        CompeticionesAdapter competicionesAdapter = new CompeticionesAdapter();
         competicionesViewModel.obtenerCompeticiones().observe(getViewLifecycleOwner(), listaCompeticion -> {
 
             // En el caso de que la base de datos no tenga datos insertados, se los metemos
             if (listaCompeticion.size() == 0) {
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("Champions League"));
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("Europa League"));
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("LaLiga"));
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("Premier League"));
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("Bundesliga"));
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("Serie A"));
-                competicionesViewModel.insertarDatosCompeticiones(new Competiciones("Ligue 1"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("Champions League"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("Europa League"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("LaLiga"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("Premier League"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("Bundesliga"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("Serie A"));
+                competicionesViewModel.insertarDatosCompeticiones(new Competicion("Ligue 1"));
             }
-            competicionesAdapter.setCompeticionesList(listaCompeticion);
+            competicionesAdapter.setCompeticionList(listaCompeticion);
             binding.listaLigas.setAdapter(competicionesAdapter);
         });
     }
 
+
+
+
+
     class CompeticionesAdapter extends  RecyclerView.Adapter<LigasFragment.CompeticionesViewHolder> {
 
-        private List<Competiciones> competicionesList;
+        private List<Competicion> competicionList;
 
         @NonNull
         @Override
@@ -74,22 +80,34 @@ public class LigasFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(@NonNull LigasFragment.CompeticionesViewHolder holder, int position) {
-            Competiciones competiciones = competicionesList.get(position);
-            holder.binding.nombreCompeticion.setText(competiciones.nombre);
-            holder.binding.iconoCompeticion.setImageDrawable(obtenerImagen(competicionesList.get(position)));
+            Competicion competicion = competicionList.get(position);
+            holder.binding.nombreCompeticion.setText(competicion.nombre);
+            holder.binding.iconoCompeticion.setImageDrawable(obtenerImagen(competicionList.get(position)));
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    competicionesViewModel.seleccionar(competicion);
+                    if (competicion.nombre.equals("Champions League")) {
+                        navController.navigate(R.id.go_to_clasificacionChampions);
+                    } else {
+                        navController.navigate(R.id.go_to_clasificacionLiga);
+                    }
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
-            if (competicionesList == null) {
+            if (competicionList == null) {
                 return 0;
             } else {
-                return competicionesList.size();
+                return competicionList.size();
             }
         }
 
-        public void setCompeticionesList(List<Competiciones> competicionesList) {
-            this.competicionesList = competicionesList;
+        public void setCompeticionList(List<Competicion> competicionList) {
+            this.competicionList = competicionList;
             notifyDataSetChanged();
         }
     }
@@ -103,21 +121,21 @@ public class LigasFragment extends Fragment {
         }
     }
 
-    private Drawable obtenerImagen(Competiciones competiciones) {
+    private Drawable obtenerImagen(Competicion competicion) {
         Drawable drawable = null;
-        if (competiciones.nombre.equals("Champions League")) {
+        if (competicion.nombre.equals("Champions League")) {
             drawable = getResources().getDrawable(R.drawable.champion_icon);
-        } else if (competiciones.nombre.equals("Europa League")) {
+        } else if (competicion.nombre.equals("Europa League")) {
             drawable = getResources().getDrawable(R.drawable.europaleague_icon);
-        } else if (competiciones.nombre.equals("LaLiga")) {
+        } else if (competicion.nombre.equals("LaLiga")) {
             drawable = getResources().getDrawable(R.drawable.laliga_icon);
-        } else if (competiciones.nombre.equals("Premier League")) {
+        } else if (competicion.nombre.equals("Premier League")) {
             drawable = getResources().getDrawable(R.drawable.premier_icon);
-        } else if (competiciones.nombre.equals("Bundesliga")) {
+        } else if (competicion.nombre.equals("Bundesliga")) {
             drawable = getResources().getDrawable(R.drawable.bundesliga_icon);
-        } else if (competiciones.nombre.equals("Serie A")) {
+        } else if (competicion.nombre.equals("Serie A")) {
             drawable = getResources().getDrawable(R.drawable.serie_a_icon);
-        } else if (competiciones.nombre.equals("Ligue 1")) {
+        } else if (competicion.nombre.equals("Ligue 1")) {
             drawable = getResources().getDrawable(R.drawable.ligueone_icon);
         }
 

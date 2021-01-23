@@ -1,4 +1,4 @@
-package com.example.proyectoapp;
+package com.example.proyectoapp.TabbedPrincipal;
 
 import android.os.Bundle;
 
@@ -12,8 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.proyectoapp.Eventos.EventosFragment;
-import com.example.proyectoapp.Ligas.LigasFragment;
+import com.example.proyectoapp.TabbedPrincipal.EventosFragment;
+import com.example.proyectoapp.TabbedPrincipal.FavoritosFragment;
+import com.example.proyectoapp.TabbedPrincipal.LigasFragment;
 import com.example.proyectoapp.databinding.FragmentTabbedGraphBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -22,7 +23,6 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class TabbedGraphFragment extends Fragment {
 
     private FragmentTabbedGraphBinding binding;
-    private static String lugar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
