@@ -87,12 +87,9 @@ public class LigasFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    competicionesViewModel.seleccionar(competicion);
-                    if (competicion.nombre.equals("Champions League")) {
-                        navController.navigate(R.id.go_to_clasificacionChampions);
-                    } else {
-                        navController.navigate(R.id.go_to_clasificacionLiga);
-                    }
+
+                    navController.navigate(R.id.go_to_clasificacionChampions);
+
                 }
             });
         }

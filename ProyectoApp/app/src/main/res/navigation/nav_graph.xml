@@ -85,7 +85,7 @@
         app:destination="@+id/tabbedEquipoFragment"/>
     <fragment
         android:id="@+id/clasificacionChampionsFragment"
-        android:name="com.example.proyectoapp.ClasificacionChampionsFragment"
+        android:name="com.example.proyectoapp.Clasificacion.ClasificacionChampionsFragment"
         android:label="fragment_clasificacion_champions"
         tools:layout="@layout/fragment_clasificacion_champions" />
 
@@ -94,7 +94,7 @@
         app:destination="@id/clasificacionChampionsFragment"/>
     <fragment
         android:id="@+id/clasificacionLigaFragment"
-        android:name="com.example.proyectoapp.ClasificacionLigaFragment"
+        android:name="com.example.proyectoapp.Clasificacion.ClasificacionLigaFragment"
         android:label="fragment_clasificacion_liga"
         tools:layout="@layout/fragment_clasificacion_liga" />
 

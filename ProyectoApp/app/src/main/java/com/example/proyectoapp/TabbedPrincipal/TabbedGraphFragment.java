@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.view.LayoutInflater;
@@ -38,11 +39,34 @@ public class TabbedGraphFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.viewPager.setAdapter(new FragmentStateAdapter(this) {
+        binding.viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
+            @NonNull
+            @Override
+            public Fragment getItem(int position) {
+                switch (position) {
+                    case 0:
+                        return new LigasFragment();
+                    case 1:
+                    default:
+                        return new EventosFragment();
+                    case 2:
+                        return new FavoritosFragment();
+
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 3;
+            }
+        });
+        binding.tabLayout.setViewPager(binding.viewPager, 1);
+/*
+        binding.viewPager.setAdapter(new FragmentStateAdapter(getChildFragmentManager()) {
 
             @NonNull
             @Override
-            public Fragment createFragment(int position) {
+            public Fragment getItem(int position) {
                 switch (position) {
                     case 0:
                         return new LigasFragment();
@@ -78,5 +102,7 @@ public class TabbedGraphFragment extends Fragment {
                 }
             }
         }).attach();
+
+ */
     }
 }

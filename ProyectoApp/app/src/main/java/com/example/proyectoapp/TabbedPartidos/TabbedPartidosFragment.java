@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.proyectoapp.Equipo.Equipo;
+import com.example.proyectoapp.Equipo.EquipoViewModel;
 import com.example.proyectoapp.Partidos.Partido;
 import com.example.proyectoapp.Partidos.PartidosViewModel;
 import com.example.proyectoapp.R;
@@ -28,6 +30,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class TabbedPartidosFragment extends Fragment {
     private FragmentTabbedPartidosBinding binding;
     private PartidosViewModel partidosViewModel;
+    private EquipoViewModel equipoViewModel;
     private NavController navController;
 
     @Override
@@ -86,7 +89,11 @@ public class TabbedPartidosFragment extends Fragment {
         }).attach();
 
 
+
+
+
         partidosViewModel.seleccionado().observe(getViewLifecycleOwner(), partido -> {
+
             binding.nombreLocal.setText(partido.equipoLocal);
             binding.nombreVisitante.setText(partido.equipoVisitante);
             binding.fechaPartido.setText(partido.fecha);
@@ -112,6 +119,8 @@ public class TabbedPartidosFragment extends Fragment {
                     navController.navigate(R.id.go_to_infoEquipo);
                 }
             });
+
+
         });
 
 /*

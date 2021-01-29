@@ -42,7 +42,15 @@ public class TabbedEquipoFragment extends Fragment {
             @NonNull
             @Override
             public Fragment createFragment(int position) {
-                return new DetallesEquipoFragment();
+                switch (position) {
+                    case 0: default:
+                        return new DetallesEquipoFragment();
+                    case 1:
+                        return new ResultadosFragment();
+                    case 2:
+                        return new ClasificacionFragment();
+                }
+
             }
 
             @Override

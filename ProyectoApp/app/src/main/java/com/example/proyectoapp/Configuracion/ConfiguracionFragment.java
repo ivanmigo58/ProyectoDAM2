@@ -34,6 +34,7 @@ import com.example.proyectoapp.Login.User;
 import com.example.proyectoapp.R;
 import com.example.proyectoapp.Utils;
 import com.example.proyectoapp.databinding.FragmentConfiguracionBinding;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 public class ConfiguracionFragment extends Fragment {
     private FragmentConfiguracionBinding binding;
@@ -136,10 +137,10 @@ public class ConfiguracionFragment extends Fragment {
         // Observa si se ha cambiado el usuario
         loginViewModel.updateUsuario.observe(getViewLifecycleOwner(), observer -> {
                 if (observer.equals(Utils.Valor.TRUE)) {
-                    Toast.makeText(getContext(), getString(R.string.usuario_actualizado), Toast.LENGTH_LONG).show();
+                    DynamicToast.makeSuccess(getContext(), getString(R.string.usuario_actualizado), Toast.LENGTH_LONG).show();
                     loginViewModel.updateUsuario.postValue(Utils.Valor.NULL);
                 } else if (observer.equals(Utils.Valor.FALSE)) {
-                    Toast.makeText(getContext(), getString(R.string.error_actualizar_usuario), Toast.LENGTH_LONG).show();
+                    DynamicToast.makeError(getContext(), getString(R.string.error_actualizar_usuario), Toast.LENGTH_LONG).show();
                     loginViewModel.updateUsuario.postValue(Utils.Valor.NULL);
                 }
         });
@@ -148,10 +149,10 @@ public class ConfiguracionFragment extends Fragment {
         // Observa cuando cambia la variable update password
         loginViewModel.updatePassword.observe(getViewLifecycleOwner(), observer -> {
                 if (observer.equals(Utils.Valor.TRUE)) {
-                    Toast.makeText(getContext(), getString(R.string.password_actualizado), Toast.LENGTH_LONG).show();
+                    DynamicToast.makeSuccess(getContext(), getString(R.string.password_actualizado), Toast.LENGTH_LONG).show();
                     loginViewModel.updatePassword.postValue(Utils.Valor.NULL);
                 } else if (observer.equals(Utils.Valor.FALSE)) {
-                    Toast.makeText(getContext(), getString(R.string.error_actualizar_password), Toast.LENGTH_LONG).show();
+                    DynamicToast.makeError(getContext(), getString(R.string.error_actualizar_password), Toast.LENGTH_LONG).show();
                     loginViewModel.updatePassword.postValue(Utils.Valor.NULL);
                 }
         });
@@ -160,11 +161,11 @@ public class ConfiguracionFragment extends Fragment {
         loginViewModel.eliminadoUsuario.observe(getViewLifecycleOwner(), observer -> {
             // Cuenta eliminada
             if (observer.equals(Utils.Valor.TRUE)) {
-                Toast.makeText(getContext(), getString(R.string.usuario_eliminado), Toast.LENGTH_LONG).show();
+                DynamicToast.makeSuccess(getContext(), getString(R.string.usuario_eliminado), Toast.LENGTH_LONG).show();
                 loginViewModel.eliminadoUsuario.postValue(Utils.Valor.NULL);
                 navController.navigate(R.id.go_to_loginFragment);
             } else if (observer.equals(Utils.Valor.FALSE)) {
-                Toast.makeText(getContext(), getString(R.string.error_eliminar_usuario), Toast.LENGTH_LONG).show();
+                DynamicToast.makeError(getContext(), getString(R.string.error_eliminar_usuario), Toast.LENGTH_LONG).show();
                 loginViewModel.eliminadoUsuario.postValue(Utils.Valor.NULL);
             }
         });

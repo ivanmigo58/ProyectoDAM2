@@ -1,6 +1,9 @@
 package com.example.proyectoapp.TabbedPrincipal;
 
+import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +26,7 @@ import com.example.proyectoapp.R;
 import com.example.proyectoapp.databinding.FragmentEventosBinding;
 import com.example.proyectoapp.databinding.ViewholderCompeticionBinding;
 import com.example.proyectoapp.databinding.ViewholderPartidosBinding;
+
 
 import java.text.DateFormat;
 import java.util.List;
@@ -72,7 +76,55 @@ public class EventosFragment extends Fragment {
             competicionesAdapter.setCompeticionList(listaCompeticion);
             binding.listaCompeticiones.setAdapter(competicionesAdapter);
         });
+
+
+        binding.addCasemiro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri1 = Uri.parse("https://www.marca.com/futbol/real-madrid/2020/11/07/5fa66f2346163f2a3b8b464d.html");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri1);
+                startActivity(intent);
+            }
+        });
+
+        binding.addChampions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri1 = Uri.parse("https://es.uefa.com/uefachampionsleague/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri1);
+                startActivity(intent);
+            }
+        });
+
+        binding.addEuropa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri1 = Uri.parse("https://es.uefa.com/uefaeuropaleague/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri1);
+                startActivity(intent);
+            }
+        });
+
+        binding.addClasico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri1 = Uri.parse("https://www.marca.com/futbol/primera-division/barcelona-vs-r-madrid/cronica/2020/10/24/5f945051268e3ee00a8b45da.html");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri1);
+                startActivity(intent);
+            }
+        });
+
+        binding.addJota.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri1 = Uri.parse("https://www.marca.com/futbol/premier-league/2020/11/07/5fa5c29cca474123128b4572.html");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri1);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     // Recyclerview
     public class PartidosAdapter extends RecyclerView.Adapter<PartidosViewHolder> {
@@ -134,7 +186,7 @@ public class EventosFragment extends Fragment {
 
 
 
-    public class CompeticionesAdapter extends  RecyclerView.Adapter<CompeticionesViewHolder> {
+     public class CompeticionesAdapter extends  RecyclerView.Adapter<CompeticionesViewHolder> {
 
         private List<Competicion> competicionList;
 
@@ -158,8 +210,8 @@ public class EventosFragment extends Fragment {
 
                     // En el caso de que la base de datos no tenga datos insertados, se los metemos
                     if (listaPartidos.size() == 0) {
-                        partidosViewModel.insertarDatosPartidos(new Partido("21:00", "Real Madrid", "Inter", null, null, null,"Champions League", false, "16.01.2021"));
-                        partidosViewModel.insertarDatosPartidos(new Partido("18:55", "FC Barcelona", "Dinamo Kiev", "85'", "3","1", "Champions League", true, "17.01.2021"));
+                        partidosViewModel.insertarDatosPartidos(new Partido("21:00", "Real Madrid", "Inter", null, null, null, "Champions League", false, "16.01.2021"));
+                        partidosViewModel.insertarDatosPartidos(new Partido("18:55", "FC Barcelona", "Dinamo Kiev", "85'", "3", "1", "Champions League", true, "17.01.2021"));
                         partidosViewModel.insertarDatosPartidos(new Partido("21:00", "Atalanta", "Liverpool", null, null, null, "Champions League", false, "18.01.2021"));
                     }
                     partidosAdapter.setPartidoList(listaPartidos);
@@ -198,7 +250,7 @@ public class EventosFragment extends Fragment {
         }
     }
 
-    public class  CompeticionesViewHolder extends RecyclerView.ViewHolder {
+    public class CompeticionesViewHolder extends RecyclerView.ViewHolder {
         ViewholderCompeticionBinding binding;
 
         public CompeticionesViewHolder(ViewholderCompeticionBinding binding) {
@@ -206,6 +258,7 @@ public class EventosFragment extends Fragment {
             this.binding = binding;
         }
     }
+
 
 
 
@@ -247,3 +300,4 @@ public class EventosFragment extends Fragment {
 
 
 }
+

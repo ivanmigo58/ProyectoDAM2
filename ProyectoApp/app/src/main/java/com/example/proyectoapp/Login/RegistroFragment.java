@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.proyectoapp.R;
 import com.example.proyectoapp.Utils;
 import com.example.proyectoapp.databinding.FragmentRegistroBinding;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 public class RegistroFragment extends Fragment {
 
@@ -58,10 +59,10 @@ public class RegistroFragment extends Fragment {
                     }
                     // Las contraseñas no coinciden
                     else {
-                        Toast.makeText(getContext(), "¡Las contraseñas no coinciden!", Toast.LENGTH_LONG).show();
+                        DynamicToast.makeWarning(getContext(), "¡Las contraseñas no coinciden!", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Debes rellenar todos los campos.", Toast.LENGTH_LONG).show();
+                    DynamicToast.makeWarning(getContext(), "Debes rellenar todos los campos.", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -71,11 +72,11 @@ public class RegistroFragment extends Fragment {
         loginViewModel.registroResult.observe(getViewLifecycleOwner(), observer -> {
                 // Si se ha podido insertar los datos
                 if (observer.equals(Utils.Valor.TRUE)) {
-                    Toast.makeText(getContext(), "Usuario registrado con exito!", Toast.LENGTH_LONG).show();
+                    DynamicToast.makeSuccess(getContext(), "Usuario registrado con exito!", Toast.LENGTH_LONG).show();
                     //loginViewModel.registroResult.postValue(Utils.Valor.NULL);
                     navController.navigate(R.id.go_to_EventosFragment);
                 } else if (observer.equals(Utils.Valor.FALSE)) {
-                    Toast.makeText(getContext(), "El usuario "+usuario+" ya existe", Toast.LENGTH_LONG).show();
+                    DynamicToast.makeError(getContext(), "El usuario "+usuario+" ya existe", Toast.LENGTH_LONG).show();
                     loginViewModel.registroResult.postValue(Utils.Valor.NULL);
                 }
         });

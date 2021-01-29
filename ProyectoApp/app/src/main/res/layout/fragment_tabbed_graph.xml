@@ -3,14 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <com.google.android.material.tabs.TabLayout
+    <com.gigamole.navigationtabstrip.NavigationTabStrip
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="50dp"
+        app:nts_active_color="@color/colorPrimary"
+        app:nts_animation_duration="300"
+        app:nts_color="@color/colorPrimary"
+        app:nts_corners_radius="1.5dp"
+        app:nts_factor="2.5"
+        app:nts_gravity="bottom"
+        app:nts_inactive_color="#C4C4C4"
+        app:nts_size="16dp"
+        app:nts_titles="@array/titles"
+        app:nts_type="point"
+        app:nts_typeface="fonts/typeface.otf"
+        app:nts_weight="3dp" />
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

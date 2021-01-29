@@ -1,4 +1,4 @@
-package com.example.proyectoapp.TabbedPrincipal;
+package com.example.proyectoapp.TabbedInfoEquipo;
 
 import android.os.Bundle;
 
@@ -10,13 +10,13 @@ import android.view.ViewGroup;
 
 import com.example.proyectoapp.R;
 
+public class ClasificacionFragment extends Fragment {
 
-public class FavoritosFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favoritos, container, false);
+        return inflater.inflate(R.layout.fragment_clasificacion, container, false);
     }
 }

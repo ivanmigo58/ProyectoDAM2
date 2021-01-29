@@ -7,7 +7,10 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.proyectoapp.Clasificacion.ClasificacionChampions;
+import com.example.proyectoapp.Clasificacion.GruposChampions;
 import com.example.proyectoapp.Competiciones.Competicion;
+import com.example.proyectoapp.Equipo.Equipo;
 import com.example.proyectoapp.Estadisticas.Estadisticas;
 import com.example.proyectoapp.Jugadores.Jugador;
 import com.example.proyectoapp.Partidos.Partido;
@@ -128,6 +131,55 @@ public interface DaoBaseDeDatos {
 
     @Query("DELETE FROM jugador")
     void eliminarJugadores();
+
+
+
+    // Insertar equipo
+    @Insert
+    void insertarEquipo(Equipo equipo);
+
+    // Comprueba si el equipo con los siguientes datos existe
+    @Query("SELECT * FROM Equipo where nombre = :nombre AND paisClub = :paisClub AND entrenador = :entrenador AND fechaFundacion = :fechaFundacion ")
+    Equipo comprobarEquipo (String nombre, String paisClub, String entrenador, String fechaFundacion);
+
+    // Obtener equipo
+    @Query("SELECT * FROM Equipo WHERE nombre = :nombre")
+    LiveData<List<Equipo>> obtenerEquipo(String nombre);
+
+
+
+
+    // Insertar equipos para clasificacion de champions
+    @Insert
+    void insertarEquiposChampions(ClasificacionChampions clasificacionChampions);
+
+
+    // Compreobar equipos champions insertados
+    @Query("SELECT * FROM ClasificacionChampions where posicion = :posicion AND nombreEquipo = :nombreEquipo AND partidosJugados = :partidosJugados AND diferenciaGoles = :diferenciaGoles AND puntos = :puntos AND grupo = :grupo")
+    ClasificacionChampions comprobarEquipoChampions(int posicion, String nombreEquipo, int partidosJugados, int diferenciaGoles, int puntos, String grupo);
+
+    // Obtener equipo champions
+    @Query("SELECT * FROM ClasificacionChampions")
+    LiveData<List<ClasificacionChampions>> obtenerEquipoChampions();
+
+    @Query("DELETE FROM ClasificacionChampions")
+    void eliminarEquiposChampions();
+
+
+
+
+    // Insertar grupos de champions
+    @Insert
+    void insertarGrupos(GruposChampions gruposChampions);
+
+    // Comprobar inserccion de grupos
+    @Query("SELECT * FROM GruposChampions WHERE letraGrupo = :letraGrupo")
+    GruposChampions comprobarGrupos(String letraGrupo);
+
+    // Obtener lista de Grupos
+    @Query("SELECT * FROM GruposChampions")
+    LiveData<List<GruposChampions>> obtenerGrupos();
+
 
 
 }

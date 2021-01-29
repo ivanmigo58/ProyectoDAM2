@@ -27,6 +27,7 @@ import com.example.proyectoapp.R;
 import com.example.proyectoapp.Utils;
 import com.example.proyectoapp.databinding.ActivityMainBinding;
 import com.example.proyectoapp.databinding.FragmentLoginBinding;
+import com.pranavpandey.android.dynamic.toasts.DynamicToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,7 @@ public class LoginFragment extends Fragment {
                 if (!usuario.equals("") && !password.equals("")) {
                     loginViewModel.obtenerUser(usuario, password);
                 } else {
-                    Toast.makeText(getContext(), "Tienes que introducir usuario y contraseña.", Toast.LENGTH_LONG).show();
+                    DynamicToast.makeWarning(getContext(), "Tienes que introducir usuario y contraseña.").show();
                 }
             }
         });
@@ -97,7 +98,7 @@ public class LoginFragment extends Fragment {
             }
             // Login incorrecto
             else if (valor.equals(Utils.Valor.FALSE)) {
-                Toast.makeText(getContext(), "Usuario o contraseña incorrecta!", Toast.LENGTH_LONG).show();
+                DynamicToast.makeError(getContext(), "Usuario o contraseña incorrecta!").show();
                 loginViewModel.loginResult.postValue(Utils.Valor.NULL);
             }
         });

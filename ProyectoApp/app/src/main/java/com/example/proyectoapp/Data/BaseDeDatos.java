@@ -6,13 +6,16 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.proyectoapp.Clasificacion.ClasificacionChampions;
+import com.example.proyectoapp.Clasificacion.GruposChampions;
 import com.example.proyectoapp.Competiciones.Competicion;
+import com.example.proyectoapp.Equipo.Equipo;
 import com.example.proyectoapp.Estadisticas.Estadisticas;
 import com.example.proyectoapp.Jugadores.Jugador;
 import com.example.proyectoapp.Partidos.Partido;
 import com.example.proyectoapp.Login.User;
 
-@Database(entities = {User.class, Partido.class, Competicion.class, Estadisticas.class, Jugador.class}, version = 14, exportSchema = false)
+@Database(entities = {User.class, Partido.class, Competicion.class, Estadisticas.class, Jugador.class, Equipo.class, ClasificacionChampions.class, GruposChampions.class}, version = 18, exportSchema = false)
 public abstract class BaseDeDatos extends RoomDatabase{
     private static volatile BaseDeDatos INSTANCIA;
 

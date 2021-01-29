@@ -22,7 +22,7 @@
     <!--    Boton negativo del dialogo-->
     <style name="edittext_dialog" parent="TextAppearance.AppCompat" >
         <item name="android:textSize">15dp</item>
-        <item name="android:backgroundTint">#005E0E</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
     </style>
 
 

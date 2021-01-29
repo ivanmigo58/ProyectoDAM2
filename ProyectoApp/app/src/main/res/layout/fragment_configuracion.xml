@@ -44,7 +44,7 @@
             <TextView
                 android:id="@+id/textViewUsuario"
                 android:layout_height="match_parent"
-                android:text="ivanmigo58"
+                android:text="@string/anonimo"
                 style="@style/textoCurvado"/>
 
             <ImageView

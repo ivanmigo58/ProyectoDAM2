@@ -1,19 +1,24 @@
-package com.example.proyectoapp.Jugadores;
+package com.example.proyectoapp.Clasificacion;
 
 import android.app.Application;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.proyectoapp.Competiciones.Competicion;
 import com.example.proyectoapp.Competiciones.CompeticionesManager;
 import com.example.proyectoapp.Data.BaseDeDatos;
 import com.example.proyectoapp.Data.DaoBaseDeDatos;
+import com.example.proyectoapp.Jugadores.JugadorManager;
+import com.example.proyectoapp.Utils;
 
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-public class JugadorManager {
+public class ClasificacionChampionsManager {
     private DaoBaseDeDatos daoBaseDeDatos;
     private Executor executor = Executors.newSingleThreadExecutor();
 
@@ -22,24 +27,23 @@ public class JugadorManager {
         void insertError();
     }
 
-    public interface EliminarJugadorCallback {
+    public interface EliminarCallback {
         void eliminadoOk();
         void eliminadoError();
     }
 
-
-    JugadorManager(Application application) {
+    ClasificacionChampionsManager(Application application) {
         daoBaseDeDatos = BaseDeDatos.obtenerInstancia(application).daoBaseDeDatos();
     }
 
-    // Insertar datos de jugador
-    void insertarDatosJugadores(Jugador jugador, InsertarDatosCallback insertarDatosCallback) {
+
+    void insertarDatosClasificacionChampions(ClasificacionChampions clasificacionChampions, ClasificacionChampionsManager.InsertarDatosCallback insertarDatosCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.insertarJugadores(jugador);
+                daoBaseDeDatos.insertarEquiposChampions(clasificacionChampions);
                 // Compruebo si se ha insertado
-                if (daoBaseDeDatos.comprobarJugador(jugador.nombre, jugador.pais, jugador.tarjetaAmarilla, jugador.tarjetaRoja, jugador.gol, jugador.cambio, jugador.onceInicial) != null) {
+                if (daoBaseDeDatos.comprobarEquipoChampions(clasificacionChampions.posicion, clasificacionChampions.nombreEquipo, clasificacionChampions.partidosJugados, clasificacionChampions.diferenciaGoles, clasificacionChampions.puntos, clasificacionChampions.grupo) != null) {
                     insertarDatosCallback.insertOk();
                 }
                 // No existe la competicion insertado
@@ -50,19 +54,19 @@ public class JugadorManager {
         });
     }
 
-    // Devuelve una lista de un equipo
-    LiveData<List<Jugador>> obtenerJugadores(String equipo, boolean onceInicial) {
-        return daoBaseDeDatos.obtenerJugadoresEquipo(equipo, onceInicial);
+    LiveData<List<ClasificacionChampions>> obtenerEquiposChampions() {
+        return daoBaseDeDatos.obtenerEquipoChampions();
     }
 
-    // Eliminar jugadores
-    void eliminarJugadores(EliminarJugadorCallback eliminarJugadorCallback) {
+
+    void eliminarEquipoChampions(EliminarCallback eliminarCallback) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                daoBaseDeDatos.eliminarJugadores();
-
+                daoBaseDeDatos.eliminarEquiposChampions();
+                eliminarCallback.eliminadoOk();
             }
         });
     }
+
 }
