@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baoyz.widget.PullRefreshLayout;
+import com.example.proyectoapp.R;
 import com.example.proyectoapp.TabbedPrincipal.EventosFragment;
 import com.example.proyectoapp.TabbedPrincipal.FavoritosFragment;
 import com.example.proyectoapp.TabbedPrincipal.LigasFragment;
@@ -61,48 +63,21 @@ public class TabbedGraphFragment extends Fragment {
             }
         });
         binding.tabLayout.setViewPager(binding.viewPager, 1);
-/*
-        binding.viewPager.setAdapter(new FragmentStateAdapter(getChildFragmentManager()) {
 
-            @NonNull
+        PullRefreshLayout layout = (PullRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
+
+        // listen refresh event
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
-            public Fragment getItem(int position) {
-                switch (position) {
-                    case 0:
-                        return new LigasFragment();
-                    case 1: default:
-                        return new EventosFragment();
-                    case 2:
-                        return new FavoritosFragment();
-                }
-
-            }
-
-            // El numero de TABS que tenemos
-            @Override
-            public int getItemCount() {
-                return 3;
+            public void onRefresh() {
+                // start refresh
+                layout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        layout.setRefreshing(false);
+                    }
+                }, 3000);
             }
         });
-
-
-        new TabLayoutMediator(binding.tabLayout, binding.viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                switch (position) {
-                    case 0:
-                        tab.setText("LIGAS");
-                        break;
-                    case 1: default:
-                        tab.setText("EVENTOS");
-                        break;
-                    case 2:
-                        tab.setText("FAVORITOS");
-                        break;
-                }
-            }
-        }).attach();
-
- */
     }
 }

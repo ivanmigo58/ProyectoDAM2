@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.proyectoapp.Competiciones.Competicion;
 import com.example.proyectoapp.Competiciones.CompeticionesViewModel;
 import com.example.proyectoapp.Partidos.Partido;
@@ -55,6 +56,8 @@ public class EventosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
         partidosViewModel = new ViewModelProvider(requireActivity()).get(PartidosViewModel.class);
         competicionesViewModel = new ViewModelProvider(requireActivity()).get(CompeticionesViewModel.class);
 
@@ -122,7 +125,6 @@ public class EventosFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
     }
 
 

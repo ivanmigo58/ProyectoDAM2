@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.example.proyectoapp.Equipo.Equipo;
 import com.example.proyectoapp.Equipo.EquipoViewModel;
 import com.example.proyectoapp.Partidos.Partido;
@@ -123,16 +124,22 @@ public class TabbedPartidosFragment extends Fragment {
 
         });
 
-/*
-        binding.botonAtras.setOnClickListener(new View.OnClickListener() {
+
+        PullRefreshLayout layout = (PullRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
+
+        // listen refresh event
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onRefresh() {
+                // start refresh
+                layout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        layout.setRefreshing(false);
+                    }
+                }, 3000);
             }
-
         });
-
- */
 
     }
 
